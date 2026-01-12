@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
-import { AnimatedShinyButton } from "@/components/magic-ui/animated-shiny-button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 
 const NAV_ITEMS = ["Home", "API", "Company", "Colossus", "Careers", "News"];
 
@@ -40,7 +39,7 @@ export default function Header() {
               href="#"
               className="hidden sm:inline-block text-sm tracking-widest transition"
               >
-                <AnimatedShinyButton>✨ GET IN TOUCH</AnimatedShinyButton>
+                <RainbowButton>Get In Touch</RainbowButton>
             </Link>
 
             {/* Mobile Menu Button */}
