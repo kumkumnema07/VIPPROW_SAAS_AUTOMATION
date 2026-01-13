@@ -28,15 +28,12 @@ export default function HeroSection() {
           <h1
             className="
           max-w-4xl font-heading
-          text-4xl font-semibold leading-tight
+          text-4xl font-semibold leading-tighter
           text-zinc-900 dark:text-white
           sm:text-5xl md:text-6xl
         "
           >
-            The best platform to{" "}
-            <span className="text-zinc-600 dark:text-zinc-300">
-              grow your business
-            </span>
+            The best platform to grow your business
           </h1>
 
           {/* Subtitle */}
@@ -45,7 +42,7 @@ export default function HeroSection() {
           mt-6 max-w-xl
           text-base leading-relaxed
           text-zinc-600 dark:text-zinc-400
-          sm:text-lg
+          sm:text-md leading-tight
         "
           >
             The most powerful tools to boost sales, hire top talent, and access

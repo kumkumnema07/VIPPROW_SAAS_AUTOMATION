@@ -6,6 +6,7 @@ import { BentoGridThird } from "@/components/aceternity-ui/BentoGrid";
 import { TestimonialMarquee } from "@/components/magic-ui/Testimonials";
 import EditorialGrid from "@/components/ui/EditorialGrid";
 import { CTA } from "@/components/magic-ui/CTA";
+import MultiSectionScroller from "@/components/ui/MultiSectionScroller";
 // import { CTA } from "@/components/magic-ui/CTA";
 
 export default function Home() {
@@ -49,6 +50,12 @@ export default function Home() {
           <CTA />
         </div>
         {/* CTA End */}
+
+        {/* Services Start */}
+        <div className="pt-20 max-w-7xl mx-auto">
+          <MultiSectionScroller />
+        </div>
+        {/* Services End */}
       </div>
     </>
   );

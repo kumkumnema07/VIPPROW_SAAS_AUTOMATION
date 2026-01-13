@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "./components/ui/Header";
 import Footer from "./components/ui/Fotter";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import { Navbar } from "@/components/ui/resizable-navbar";
+import { NavbarMenu } from "./components/ui/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,8 +42,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} ${poppins.variable} antialiased bg-black`}>
-        <Header />
+      <body
+        className={`${inter.variable} ${poppins.variable} antialiased bg-black`}
+      >
+        <NavbarMenu />
         <SmoothCursor />
         {children}
         <Footer />
