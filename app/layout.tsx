@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "./components/ui/Header";
 import Footer from "./components/ui/Fotter";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +42,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${inter.variable} ${poppins.variable} antialiased bg-black`}>
         <Header />
+        <SmoothCursor />
         {children}
         <Footer />
       </body>

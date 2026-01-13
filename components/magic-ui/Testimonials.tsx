@@ -5,21 +5,27 @@ import { Marquee } from "../ui/marquee";
 const reviews = [
   {
     name: "Client Name",
-    username: "@client",
-    body: "I don't know what to say. I'm speechless. This is amazing. I don't know what to say. I'm speechless. This is amazing. I don't know what to say. I'm speechless. This is amazing.",
+    username: "Client Dep. 1",
+    body: "I don't know what to say. I'm speechless. <span>This is amazing. I don't know what to say. I'm speechless.</span> This is amazing. I don't know what to say. I'm speechless. This is amazing.",
     img: "https://avatar.vercel.sh/jack",
   },
   {
     name: "Client Name",
-    username: "@client",
-    body: "I don't know what to say. I'm speechless. This is amazing. I don't know what to say. I'm speechless. This is amazing. I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://avatar.vercel.sh/jill",
+    username: "Client Dep. 2",
+    body: "I don't know what to say. I'm speechless. <span>This is amazing. I don't know what to say. I'm speechless.</span> This is amazing. I don't know what to say. I'm speechless. This is amazing.",
+    img: "https://avatar.vercel.sh/jack",
   },
   {
     name: "Client Name",
-    username: "@client",
-    body: "I don't know what to say. I'm speechless. This is amazing. I don't know what to say. I'm speechless. This is amazing. I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://avatar.vercel.sh/john",
+    username: "Client Dep. 3",
+    body: "I don't know what to say. I'm speechless. <span>This is amazing. I don't know what to say. I'm speechless.</span> This is amazing. I don't know what to say. I'm speechless. This is amazing.",
+    img: "https://avatar.vercel.sh/jack",
+  },
+  {
+    name: "Client Name",
+    username: "Client Dep. 4",
+    body: "I don't know what to say. I'm speechless. <span>This is amazing. I don't know what to say. I'm speechless.</span> This is amazing. I don't know what to say. I'm speechless. This is amazing.",
+    img: "https://avatar.vercel.sh/jack",
   },
 ];
 
@@ -49,7 +55,16 @@ const ReviewCard = ({
     >
       <div className="flex flex-row items-center gap-2">
         <div className="flex flex-col">
-          <blockquote className="mb-5 text-sm font-heading">{body}</blockquote>
+          <blockquote
+            className="
+                mb-5 text-sm font-heading
+                text-zinc-200
+                [&_span]:text-blue-500
+                [&_span]:font-medium
+              "
+            dangerouslySetInnerHTML={{ __html: body }}
+          />
+
           <div className="flex items-center gap-x-2">
             <img
               className="rounded-full"
@@ -58,12 +73,14 @@ const ReviewCard = ({
               alt=""
               src={img}
             />
-            <figcaption className="text-sm font-medium dark:text-white font-heading">
-              {name}
-            </figcaption>
-            <p className="text-xs font-medium dark:text-white/40 font-heading">
-              {username}
-            </p>
+            <div>
+              <figcaption className="text-sm font-medium dark:text-white font-heading">
+                {name}
+              </figcaption>
+              <p className="text-xs font-medium dark:text-white/40 font-heading mt-1">
+                {username}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -73,7 +90,7 @@ const ReviewCard = ({
 
 export function TestimonialMarquee() {
   return (
-    <div className="relative flex h-[500px] w-full flex-row items-center justify-center overflow-hidden bg-black my-20">
+    <div className="relative flex h-[600px] w-full flex-row items-center justify-center overflow-hidden bg-black my-20">
       <Marquee pauseOnHover vertical className="[--duration:20s]">
         {firstRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
