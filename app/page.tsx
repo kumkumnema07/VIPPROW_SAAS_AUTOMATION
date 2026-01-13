@@ -3,6 +3,7 @@ import { PartnerBrandMarquee } from "@/components/magic-ui/PartnerBrandMarquee";
 import HeroSection from "./components/ui/HeroSection";
 import PrimaryHeading from "@/components/ui/heading/PrimaryHeading";
 import { BentoGridThird } from "@/components/aceternity-ui/BentoGrid";
+import { TestimonialMarquee } from "@/components/magic-ui/Testimonials";
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
         <HeroSection />
         <PartnerBrandMarquee />
         {/* Bento Grid Start */}
-        <div className="py-36">
+        <div className="pt-20">
           <PrimaryHeading
             heading="Empower Your Workflow with AI"
             des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
@@ -19,6 +20,16 @@ export default function Home() {
           <BentoGridThird />
         </div>
         {/* Bento Grid End */}
+
+        {/* Testimonial Start */}
+        <div className="pt-20">
+          <PrimaryHeading
+            heading="Empower Your Workflow with AI"
+            des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
+          />
+          <TestimonialMarquee />
+        </div>
+        {/* Testimonial End */}
       </div>
     </>
   );
