@@ -33,7 +33,7 @@ export function NavbarMenu() {
     },
     {
       name: "Contact",
-      link: "#contact",
+      link: "/contact",
     },
   ];
 
