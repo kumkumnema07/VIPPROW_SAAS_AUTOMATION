@@ -57,14 +57,14 @@ export default function HeroSection() {
         </section>
 
         {/* 🧩 Bottom Brand SVG */}
-        <div className="pointer-events-none absolute bottom-20 left-0 right-0 z-0">
+        <div className="pointer-events-none absolute bottom-24 left-0 right-0 z-0">
           <img
             src="/assets/images/logo/brand_outline.svg"
             alt="VIPPROW Brand"
             className="
             mx-auto w-[120%] max-w-none
             translate-y-1/3
-            opacity-15 dark:opacity-30
+            opacity-15 dark:opacity-50
             sm:w-[110%] md:w-[100%]
           "
           />
@@ -73,7 +73,7 @@ export default function HeroSection() {
         {/* 🌫 Bottom Fade */}
         <div
           className="
-        pointer-events-none absolute bottom-0 left-0 z-10 h-56 w-full
+        pointer-events-none absolute bottom-0 left-0 z-10 h-20 w-full
         bg-gradient-to-t
         from-zinc-50 via-zinc-50/90 to-transparent
         dark:from-black dark:via-black/70
