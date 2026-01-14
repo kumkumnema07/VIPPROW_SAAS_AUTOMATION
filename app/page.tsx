@@ -2,7 +2,7 @@
 import { PartnerBrandMarquee } from "@/components/magic-ui/PartnerBrandMarquee";
 import HeroSection from "./components/ui/HeroSection";
 import PrimaryHeading from "@/components/ui/heading/PrimaryHeading";
-import { BentoGridThird } from "@/components/aceternity-ui/BentoGrid";
+import { BentoGridSection } from "@/components/aceternity-ui/BentoGrid";
 import { TestimonialMarquee } from "@/components/magic-ui/Testimonials";
 import EditorialGrid from "@/components/ui/EditorialGrid";
 import { CTA } from "@/components/magic-ui/CTA";
@@ -20,7 +20,7 @@ export default function Home() {
             heading="Empower Your Workflow with AI"
             des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
           />
-          <BentoGridThird />
+          <BentoGridSection />
         </div>
         {/* Bento Grid End */}
 

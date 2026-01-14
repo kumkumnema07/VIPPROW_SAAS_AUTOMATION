@@ -6,6 +6,7 @@ export default function CompanyPage() {
     <>
       <BackgroundRippleEffect />
       <FeaturesSection />
+
     </>
   );
 }
