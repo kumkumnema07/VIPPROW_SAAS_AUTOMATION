@@ -6,18 +6,23 @@ import { Star } from "lucide-react";
 export default function MissionSection() {
   return (
     <section className="relative w-full bg-black text-white py-20 px-6 md:px-16">
-      <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+      <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         {/* LEFT CONTENT */}
         <div>
           <span className="text-sm uppercase tracking-widest text-neutral-400">
-            OUR MISSION
+            OUR VISION
           </span>
 
-          <h2 className="mt-4 text-4xl md:text-5xl font-semibold font-heading leading-tighter">
+          <h2 className="mt-4 text-4xl md:text-4xl font-semibold font-heading leading-tighter">
             How we helped Hourglass
           </h2>
 
-          <div className="mt-10 space-y-6 text-neutral-400 leading-relaxed">
+          <div className="mt-10 mb-10 space-y-6 text-neutral-400 leading-relaxed font-heading text-sm">
+            <p>
+              Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam
+              suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum
+              quis montes, sit sit.
+            </p>
             <p>
               Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam
               suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum
@@ -31,15 +36,27 @@ export default function MissionSection() {
             </p>
           </div>
 
-          <h3 className="mt-14 text-xl font-semibold text-white font-heading">
-            Closing more clients
-          </h3>
+          <span className="text-sm uppercase tracking-widest text-neutral-400">
+            OUR MISSION
+          </span>
 
-          <p className="mt-4 text-neutral-400 max-w-xl leading-relaxed">
-            Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla
-            odio nisl vitae. In aliquet pellentesque aenean hac vestibulum
-            turpis mi bibendum diam.
-          </p>
+          <h2 className="mt-4 text-4xl md:text-4xl font-semibold font-heading leading-tighter">
+            How we helped Hourglass
+          </h2>
+
+          <div className="mt-10 space-y-6 text-neutral-400 leading-relaxed font-heading text-sm">
+            <p>
+              Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam
+              suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum
+              quis montes, sit sit.
+            </p>
+
+            <p>
+              Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat
+              mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu
+              quis fusce augue enim.
+            </p>
+          </div>
         </div>
 
         {/* RIGHT CARD */}
