@@ -6,7 +6,6 @@ import {
   NavItems,
   MobileNav,
   NavbarLogo,
-  NavbarButton,
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
@@ -26,7 +25,7 @@ export function NavbarMenu() {
     },
     {
       name: "Services",
-      link: "#pricing",
+      link: "/services",
     },
     {
       name: "Articles",

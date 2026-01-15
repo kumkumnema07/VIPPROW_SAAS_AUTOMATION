@@ -4,11 +4,11 @@ import PrimaryHeading from "../ui/heading/PrimaryHeading";
 
 export function LampSection() {
   return (
-    <section className="relative overflow-hidden py-56">
+    <section className="relative overflow-hidden py-40">
       
       {/* 🌞 Blue Gradient Sun */}
       <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2">
-        <div className="h-[600px] w-[600px] rounded-full 
+        <div className="h-[500px] w-[600px] rounded-full 
           bg-gradient-to-b from-blue-500/60 via-blue-400/30 to-transparent
           blur-3xl"
         />

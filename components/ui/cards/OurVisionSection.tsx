@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function OurVisionSection() {
   return (
-    <section className="relative py-24 text-white overflow-hidden">
+    <section className="relative py-20 px-6 md:px-16 text-white overflow-hidden">
       {/* Subtle background glow */}
       {/* <div className="pointer-events-none absolute -top-32 -left-32 h-[480px] w-[480px] rounded-full bg-violet-600/10 blur-[120px]" /> */}
 

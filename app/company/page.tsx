@@ -17,17 +17,12 @@ export default function CompanyPage() {
       {/* Company Story Start */}
       <div className="pt-20 max-w-7xl mx-auto">
         <CompanyStory />
+      <ServiceCardGrid />
       </div>
       {/* Company Story End */}
 
       {/* Services Start */}
-      <div className="pt-20 max-w-7xl mx-auto">
-        <PrimaryHeading
-          heading="Empower Your Workflow with AI"
-          des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
-        />
-        <ServiceCardGrid />
-      </div>
+      
       {/* Services End */}
 
       {/* Mission Start */}
