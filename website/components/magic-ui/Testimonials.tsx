@@ -48,7 +48,7 @@ const ReviewCard = ({
   return (
     <figure
       className={cn(
-        "relative h-full w-fit cursor-pointer overflow-hidden rounded-xl border p-4 sm:w-96",
+        "relative h-full w-full cursor-pointer overflow-hidden rounded-xl border p-4 sm:w-96",
         // light styles
         "border-[#27272A] bg-[#27272A] hover:bg-[#27272A]",
         // dark styles
@@ -92,7 +92,7 @@ const ReviewCard = ({
 
 export function TestimonialMarquee() {
   return (
-    <div className="relative flex h-[600px] w-full flex-row items-center justify-center overflow-hidden bg-black my-20">
+    <div className="relative flex h-[600px] w-full md:flex-row items-center justify-center overflow-hidden bg-black my-20 py-12 md:py-22">
       <Marquee pauseOnHover vertical className="[--duration:20s]">
         {firstRow.map((review) => (
           <ReviewCard key={review.username} {...review} />

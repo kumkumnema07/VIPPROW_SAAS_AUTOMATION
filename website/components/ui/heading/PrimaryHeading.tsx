@@ -9,11 +9,11 @@ export default function PrimaryHeading({
 }: PrimaryHeadingProps) {
   return (
     <>
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center px-2">
         <h1
           className="
         max-w-5xl font-heading
-          text-4xl font-semibold leading-tight
+          text-3xl font-semibold leading-tight
           text-zinc-900 dark:text-white
           sm:text-4xl md:text-5xl text-center
           "
@@ -25,7 +25,7 @@ export default function PrimaryHeading({
         <p
           className="
           mt-6 max-w-xl
-          text-base leading-relaxed
+          text-sm leading-relaxed
           text-zinc-600 dark:text-zinc-400
           sm:text-md text-center
           "
