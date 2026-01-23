@@ -46,6 +46,9 @@ export default function RootLayout({
         className={`${inter.variable} ${poppins.variable} antialiased bg-black`}
       >
         <NavbarMenu />
+        <div className="hidden lg:block">
+
+        </div>
         <SmoothCursor />
         {children}
         <Footer />

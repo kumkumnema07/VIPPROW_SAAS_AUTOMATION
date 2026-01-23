@@ -12,7 +12,7 @@ export default function PrimaryHeading({
       <div className="flex flex-col justify-center items-center px-2">
         <h1
           className="
-        max-w-5xl font-heading
+          max-w-5xl font-heading
           text-3xl font-semibold leading-tight
           text-zinc-900 dark:text-white
           sm:text-4xl md:text-5xl text-center
