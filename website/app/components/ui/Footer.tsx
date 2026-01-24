@@ -28,8 +28,8 @@ export default function Footer() {
                 y2="32"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#F8FAFC" />
-                <stop offset="1" stop-color="#383838" />
+                <stop stopColor="#F8FAFC" />
+                <stop offset="1" stopColor="#383838" />
               </linearGradient>
             </defs>
           </svg>
@@ -126,9 +126,9 @@ export default function Footer() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="lucide lucide-dribbble size-5 hover:text-indigo-500"
                 aria-hidden="true"
               >
@@ -150,9 +150,9 @@ export default function Footer() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="lucide lucide-linkedin size-5 hover:text-indigo-500"
                 aria-hidden="true"
               >
@@ -173,9 +173,9 @@ export default function Footer() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="lucide lucide-twitter size-5 hover:text-indigo-500"
                 aria-hidden="true"
               >
@@ -194,9 +194,9 @@ export default function Footer() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="lucide lucide-youtube size-6 hover:text-indigo-500"
                 aria-hidden="true"
               >
