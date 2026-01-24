@@ -1,7 +1,7 @@
-import { LoginForm } from "@/components/login-form"
+import { ContactForm } from "@/components/contact-form"
 
-export default function ContactForm() {
+export default function ContactFormPage() {
   return (
-   <LoginForm />
+   <ContactForm />
   )
 }
