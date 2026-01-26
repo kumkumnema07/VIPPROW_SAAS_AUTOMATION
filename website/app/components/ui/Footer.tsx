@@ -109,7 +109,7 @@ export default function Footer() {
             {policies?.map(({ title, _id }) => {
               return (
                 <li key={_id}>
-                  <Link href="/" className="hover:text-indigo-600 transition">
+                  <Link href={`/policy/details/${_id}`} className="hover:text-indigo-600 transition">
                     {title ?? "Untitle"}
                   </Link>
                 </li>
