@@ -10,8 +10,8 @@ Accept: application/json
 
 ###
 
-### Get Blog by Slug
-GET {{baseUrl}}/blog/blog-4
+### Get Blog by Id
+GET {{baseUrl}}/blog/6977400b7154ad11ac52c242
 Accept: application/json
 
 

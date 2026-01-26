@@ -1,12 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface EditorialCardProps {
+  href?: string;
   image?: string;
   title?: string;
   category_name?: string;
 }
 
 export default function EditorialCard({
+  href,
   image,
   title,
   category_name,
@@ -16,6 +19,7 @@ export default function EditorialCard({
   const safeCategory = category_name ?? "Uncategorized";
 
   return (
+    <Link href={`${href}`}>
     <div className="group cursor-pointer">
       {/* Image Card */}
       <div
@@ -43,5 +47,6 @@ export default function EditorialCard({
         <span className="text-xs text-zinc-300">{safeCategory}</span>
       </div>
     </div>
+    </Link>
   );
 }

@@ -11,7 +11,6 @@ export default async function ArticlesPage({
 }: {
   searchParams: Promise<{ page?: string }>;
 }) {
-
   // ✅ unwrap searchParams
   const { page: pageParam } = await searchParams;
 
@@ -37,6 +36,7 @@ export default async function ArticlesPage({
           {data.data.map((item) => (
             <EditorialCard
               key={item._id}
+              href={`/articles/details/${item._id}`}
               image={item.thumbnail ?? "/image/placeholder.png"}
               title={item.title}
               category_name={
@@ -49,7 +49,10 @@ export default async function ArticlesPage({
         </div>
 
         {/* Pagination */}
-        <ArticlesClient currentPage={page} totalPages={data.pagination.totalPages} />
+        <ArticlesClient
+          currentPage={page}
+          totalPages={data.pagination.totalPages}
+        />
       </section>
 
       <div className="pt-20 max-w-7xl mx-auto">
