@@ -17,17 +17,21 @@ import {
   Album,
   FileBadge,
   UserStar,
+  
   ImageUp,
   Layers,
   NotebookTabs,
   BookCopy,
   ChartPie,
   Table2,
+  Globe,
 } from "lucide-react";
 import { NavMain } from "~/components/nav-main";
 import { NavProjects } from "~/components/nav-projects";
 import { NavSecondary } from "~/components/nav-secondary";
 import { NavUser } from "~/components/nav-user";
+import { Briefcase } from "lucide-react";
+
 import {
   Sidebar,
   SidebarContent,
@@ -42,6 +46,19 @@ import { useSelector } from "react-redux";
 import type { RootState } from "~/redux/store";
 import { useLocation } from "react-router";
 import vipprow_logo from "@/welcome/vipprow.png";
+
+type NavItem = {
+  title: string;
+  url: string;
+  icon?: any;
+  isActive?: boolean;
+  items?: {
+    title: string;
+    url: string;
+  }[];
+};
+
+type SidebarData = Record<string, NavItem[]>;
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { isLoading } = useUserProfile();
@@ -83,7 +100,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         icon: Album,
         isActive: isActive("/admin/service"),
       },
+
+      {
+        title: "Domains",
+        url: "/admin/domains",
+        icon: Globe,
+        isActive: isActive("/admin/domains"),
+      },
     ],
+
+
+     
 
     customerFeedbackNav: [
       {
@@ -123,6 +150,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         isActive: isActive("/admin/contact"),
       },
     ],
+    careerManagementNav: [
+      {
+        title: "Careers",
+        url: "/admin/career",
+        icon: Briefcase,
+        isActive: isActive("/admin/career"),
+      },
+    ],
+
+  clientShowcaseNav: [
+  {
+    title: "Case Studies",
+    url: "/admin/case-study",
+    icon: Layers,
+    isActive: isActive("/admin/case-study"),
+  },
+],
 
     contentManagementNav: [
       {
@@ -176,8 +220,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     ],
 
     navSecondary: [
-      { title: "Support", url: "#", icon: LifeBuoy },
-      { title: "Feedback", url: "#", icon: Send },
+      { title: "Support", url: "/admin/support", icon: LifeBuoy },
+      { title: "Feedback", url: "/admin/feedback", icon: Send },
+      { title: "Domains", url: "/admin/domains", icon: Send },
     ],
   };
 
@@ -224,6 +269,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           items={data.legalComplianceNav}
           groupName="Legal & Compliance"
         />
+        <NavMain
+          items={data.careerManagementNav}
+          groupName="Career Management"
+        />
+
+        <NavMain items={data.clientShowcaseNav} groupName="Client Showcase" />
 
         <NavMain items={data.appSettingsNav} groupName="Application Settings" />
 

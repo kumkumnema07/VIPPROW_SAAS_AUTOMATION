@@ -28,8 +28,14 @@ export default [
       ...createCrudRoutes("user-certificate"),
       ...createCrudRoutes("gallery"),
       ...createCrudRoutes("contact"),
+      ...createCrudRoutes("career"),
+      ...createCrudRoutes("case-study"),
+      ...createCrudRoutes("feedback"),
+      ...createCrudRoutes("support"),
+      ...createCrudRoutes("domains"),
 
-      // Add other custom routes freely
+
+      // Add other custom routes freelya
       //   route("reports", "features/reports/index.tsx"),
       //   route("reports/sales", "features/reports/sales-wrapper.tsx"),
     ]),
