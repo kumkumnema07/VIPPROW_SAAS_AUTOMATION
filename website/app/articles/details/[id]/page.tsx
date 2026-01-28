@@ -3,6 +3,7 @@
 import { useArticleById } from "@/app/features/articles/hook/useArticle";
 import PrimaryHeading from "@/components/ui/heading/PrimaryHeading";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 
 export default function DetailPage() {
@@ -53,9 +54,11 @@ export default function DetailPage() {
       {/* Thumbnail */}
       {item.thumbnail && (
         <div className="mb-10 overflow-hidden rounded-2xl border border-white/10">
-          <img
+          <Image
             src={item.thumbnail}
             alt={item.title}
+            width={1920}
+            height={1080}
             className="h-auto w-full object-cover"
           />
         </div>
