@@ -28,10 +28,10 @@ export default [
       ...createCrudRoutes("user-certificate"),
       ...createCrudRoutes("gallery"),
       ...createCrudRoutes("contact"),
-      ...createCrudRoutes("career"),
-      ...createCrudRoutes("case-study"),
-      ...createCrudRoutes("feedback"),
-      ...createCrudRoutes("support"),
+      // ...createCrudRoutes("career"),
+      // ...createCrudRoutes("case-study"),
+      // ...createCrudRoutes("feedback"),
+      // ...createCrudRoutes("support"),
       ...createCrudRoutes("domains"),
 
 
