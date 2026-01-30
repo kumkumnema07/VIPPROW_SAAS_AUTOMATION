@@ -1,6 +1,6 @@
-// app/features/category/edit-wrapper.tsx
-import CategoryForm from "~/features/domains/components/form";
+// app/features/domain/edit-wrapper.tsx
+import DomainForm from "~/features/domains/components/form";
 
 export default function EditDomains() {
-  return <CategoryForm mode="edit" />;
+  return <DomainForm mode="edit" />;
 }
