@@ -42,14 +42,14 @@ export default function EditorialGrid({
 
   if (loading) {
     return (
-      <section className="bg-black px-6 py-16 text-white">
+      <section className="px-6 py-16 text-white">
         Loading articles...
       </section>
     );
   }
 
   return (
-    <section className="bg-black px-6 py-16">
+    <section className="px-6 py-16">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {articles.map((item) => (
           <EditorialCard

@@ -47,7 +47,7 @@ export function TestimonialMarquee() {
   const testimonials = data?.data || [];
 
   return (
-    <section className="w-full bg-black py-16">
+    <section className="w-full py-16">
       <div className="max-w-7xl mx-auto px-6">
         {/* States */}
         {isLoading && (
