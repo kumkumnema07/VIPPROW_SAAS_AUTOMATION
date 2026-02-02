@@ -225,7 +225,7 @@ export const createTestimonial = async (req, res) => {
 export const updateTestimonial = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, designation, description, rating, isActive } = req.body;
+    const { name, designation, short_description, description, video_link, rating, isActive } = req.body;
 
     const testimonial = await Testimonial.findById(id);
     if (!testimonial) {
