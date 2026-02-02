@@ -30,7 +30,7 @@ export const getAllActiveTestimonials = async (req, res) => {
       .skip((page - 1) * limit)
       .limit(limit)
       .select(
-        "name designation description shortDescription avatar rating createdAt"
+        "name designation short_description description shortDescription avatar thumbnail rating video_link read_time createdAt",
       )
       .lean();
 
@@ -47,6 +47,33 @@ export const getAllActiveTestimonials = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+};
+
+/* =====================================
+   🔍 Get Testimonial by ID
+   ===================================== */
+export const getActiveTestimonialById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const testimonial = await Testimonial.findById(id)
+      .where({ isActive: true })
+      .populate("createdBy updatedBy", "name email")
+      .lean();
+
+    if (!testimonial) {
+      return res.status(404).json({ message: "Testimonial not found." });
+    }
+
+    return res.status(200).json({
+      message: "Testimonial fetched successfully.",
+      data: testimonial,
+    });
+  } catch (error) {
+    console.error("Error fetching testimonial:", error.message);
+    return res
+      .status(500)
+      .json({ message: "Internal Error", error: error.message });
   }
 };
 
@@ -128,31 +155,54 @@ export const getTestimonialById = async (req, res) => {
    ===================================== */
 export const createTestimonial = async (req, res) => {
   try {
-    const { name, designation, description, rating, isActive } = req.body;
+    const uploaded = { avatar: null, thumbnail: null };
 
-    if (!name || !description || !rating) {
+    const {
+      name,
+      short_description,
+      rating,
+      isActive,
+    } = req.body;
+
+    if (!name || !short_description) {
       return res
         .status(400)
-        .json({ message: "Name, description, and rating are required." });
+        .json({ message: "Name & short description are required." });
     }
 
     let avatarUrl = null;
 
     // Upload avatar (if provided)
     if (req.files?.avatar?.[0]?.path) {
-      const uploaded = await uploadToCloudinary(
+      const upload = await uploadToCloudinary(
         req.files.avatar[0].path,
-        "testimonials/avatar"
+        "testimonials/avatar",
       );
-      avatarUrl = uploaded.secure_url;
+      avatarUrl = upload.secure_url;
+      uploaded.avatar = upload.public_id;
+    }
+
+    let thumbnailUrl = null;
+    // Upload thumbnail (if provided)
+    if (req.files?.thumbnail?.[0]?.path) {
+      const upload = await uploadToCloudinary(
+        req.files.thumbnail[0].path,
+        "testimonials/thumbnail",
+      );
+      thumbnailUrl = upload.secure_url;
+      uploaded.thumbnail = upload.public_id;
     }
 
     const testimonial = await Testimonial.create({
       name,
-      designation,
-      description,
+      short_description: req.body.short_description,
+      designation: req.body.designation,
+      description: req.body.description,
       avatar: avatarUrl,
+      thumbnail: thumbnailUrl,
       rating,
+      read_time: req.body.read_time ?? "2 min",
+      video_link : req.body.video_link ?? null,
       isActive,
       createdBy: req.user._id,
     });
@@ -196,15 +246,39 @@ export const updateTestimonial = async (req, res) => {
       }
       const upload = await uploadToCloudinary(
         req.files.avatar[0].path,
-        "testimonials/avatar"
+        "testimonials/avatar",
       );
       avatarUrl = upload.secure_url;
     }
 
+
+
+    let thumbnailUrl = testimonial.thumbnail;
+
+    // Handle avatar replacement
+    if (req.files?.thumbnail?.[0]?.path) {
+      if (testimonial.thumbnail) {
+        try {
+          const oldPublicId = testimonial.thumbnail.split("/").pop().split(".")[0];
+          await destroyFromCloudinary(`testimonials/thumbnail/${oldPublicId}`);
+        } catch (e) {
+          console.warn("Error deleting old thumbnail:", e.message);
+        }
+      }
+      const upload = await uploadToCloudinary(
+        req.files.thumbnail[0].path,
+        "testimonials/thumbnail",
+      );
+      thumbnailUrl = upload.secure_url;
+    }
+
     testimonial.name = name ?? testimonial.name;
+    testimonial.short_description = short_description ?? testimonial.short_description;
     testimonial.designation = designation ?? testimonial.designation;
     testimonial.description = description ?? testimonial.description;
     testimonial.avatar = avatarUrl;
+    testimonial.thumbnail = thumbnailUrl;
+    testimonial.video_link = video_link ?? testimonial.video_link;
     testimonial.rating = rating ?? testimonial.rating;
     testimonial.isActive = isActive ?? testimonial.isActive;
     testimonial.updatedBy = req.user._id;

@@ -12,7 +12,7 @@ import ServiceCardGrid from "@/components/ui/ServiceCardGrid";
 export default function Home() {
   return (
     <>
-      <div className="bg-black">
+      <div className="bg-transparent">
         <HeroSection />
         <PartnerBrandMarquee />
 

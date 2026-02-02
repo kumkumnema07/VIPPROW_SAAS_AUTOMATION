@@ -1,50 +1,70 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EditorialCard from "@/components/ui/cards/EditorialCard";
-import { editorials } from "@/data/editorials";
-import { Pagination } from "@/components/ui/Pagination";
+import { fetchPublicArticles } from "@/app/features/articles/services/article.api";
+import { Article } from "@/types/article";
 
 interface EditorialGridProps {
   itemsPerPage?: number;
-  isPaggination?:boolean
+  isPaggination?: boolean;
 }
 
 export default function EditorialGrid({
-  itemsPerPage = 6,
-  isPaggination = false
+  itemsPerPage = 3,
 }: EditorialGridProps) {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const totalPages = Math.ceil(editorials.length / itemsPerPage);
+  useEffect(() => {
+    const loadArticles = async () => {
+      try {
+        const res = await fetchPublicArticles({
+          page: 1,
+          limit: itemsPerPage,
+          sortBy: "createdAt",
+          sortOrder: "desc",
+          filter: "active",
+        });
 
-  const start = (currentPage - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
+        console.log("API RESPONSE 👉", res);
 
-  const currentItems = editorials.slice(start, end);
+        setArticles(Array.isArray(res.data) ? res.data : [res.data]);
+      } catch (error) {
+        console.error("Failed to fetch articles:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadArticles();
+  }, [itemsPerPage]);
+
+  if (loading) {
+    return (
+      <section className="px-6 py-16 text-white">
+        Loading articles...
+      </section>
+    );
+  }
 
   return (
-    <section className="bg-black px-6 py-16">
+    <section className="px-6 py-16">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {currentItems.map((item, index) => (
+        {articles.map((item) => (
           <EditorialCard
-            key={index}
-            image={item.image}
+            key={item._id}
+            href={`/articles/details/${item._id}`}
+            image={item.thumbnail ?? "/image/placeholder.png"}
             title={item.title}
-            meta={item.meta}
+            category_name={
+              typeof item.category === "object" && item.category !== null
+                ? item.category.name
+                : undefined
+            }
           />
         ))}
       </div>
-
-        {}
-      {/* Pagination */}
-      {/* {totalPages > 1 && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={setCurrentPage}
-        />
-      )} */}
     </section>
   );
 }

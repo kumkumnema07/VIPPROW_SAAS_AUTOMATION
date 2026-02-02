@@ -4,7 +4,7 @@ import { SparklesCore } from "../ui/sparkles";
 
 export function SparklesHeading() {
   return (
-    <div className="h-auto w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
+    <div className="h-auto w-full bg-black- flex flex-col items-center justify-center overflow-hidden rounded-md">
       <h1 className="md:text-7xl text-4xl lg:text-6xl font-semibold text-center text-white relative z-20 font-heading">
         Vipprow Story
       </h1>

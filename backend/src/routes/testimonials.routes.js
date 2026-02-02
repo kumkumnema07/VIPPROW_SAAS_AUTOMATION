@@ -9,15 +9,20 @@ import {
   partiallyUpdateTestimonial,
   destroyTestimonialById,
   getAllActiveTestimonials,
+  getActiveTestimonialById,
 } from "../controllers/testimonial.controller.js";
 
 const router = Router();
 
-
 /* ================================
    🟢 PUBLIC ROUTES
 ================================ */
-router.get("/", getAllActiveTestimonials);
+router.get("/public", getAllActiveTestimonials);
+router.get("/public/:id", getActiveTestimonialById);
+
+/* ================================
+   🔒 ADMIN ROUTES
+================================ */
 
 // ✅ Get all testimonials (paginated)
 router.get("/", ensureAuth, getTestimonials);
@@ -29,16 +34,22 @@ router.get("/:id", ensureAuth, getTestimonialById);
 router.post(
   "/",
   ensureAuth,
-  upload.fields([{ name: "avatar", maxCount: 1 }]),
-  createTestimonial
+  upload.fields([
+    { name: "avatar", maxCount: 1 },
+    { name: "thumbnail", maxCount: 1 },
+  ]),
+  createTestimonial,
 );
 
 // ✅ Update testimonial (with avatar upload)
 router.put(
   "/:id",
   ensureAuth,
-  upload.fields([{ name: "avatar", maxCount: 1 }]),
-  updateTestimonial
+  upload.fields([
+    { name: "avatar", maxCount: 1 },
+    { name: "thumbnail", maxCount: 1 },
+  ]),
+  updateTestimonial,
 );
 
 // ✅ Partially update testimonial (toggle isActive, etc.)

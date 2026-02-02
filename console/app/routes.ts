@@ -30,7 +30,11 @@ export default [
       ...createCrudRoutes("contact"),
       // ...createCrudRoutes("career"),
       // ...createCrudRoutes("case-study"),
+<<<<<<< HEAD
       ...createCrudRoutes("feedback"),
+=======
+      // ...createCrudRoutes("feedback"),
+>>>>>>> e91a55fda9995b3a744c797892bb85c46f14374f
       // ...createCrudRoutes("support"),
       ...createCrudRoutes("domains"),
 

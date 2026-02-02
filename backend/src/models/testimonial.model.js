@@ -17,6 +17,12 @@ const testimonialSchema = new mongoose.Schema(
       default: null,
     },
 
+     short_description: {
+      type: String,
+      trim: true,
+      maxlength: [500, "Short description must be under 500 characters"],
+    },
+
     description: {
       type: String,
       required: [true, "Description is required."],
@@ -45,6 +51,39 @@ const testimonialSchema = new mongoose.Schema(
         validator: Number.isInteger,
         message: "Rating must be an integer value.",
       },
+    },
+
+     thumbnail: {
+      type: String,
+      default: null,
+      validate: {
+        validator: (v) =>
+          !v || /^https?:\/\/.+\.(jpg|jpeg|png|webp|gif)$/i.test(v),
+        message: "Invalid image URL format for thumbnail",
+      },
+    },
+    gallery_images: [
+      {
+        type: String,
+        validate: {
+          validator: (v) =>
+            !v || /^https?:\/\/.+\.(jpg|jpeg|png|webp|gif)$/i.test(v),
+          message: "Invalid image URL format in gallery",
+        },
+      },
+    ],
+    video_link: {
+      type: String,
+      validate: {
+        validator: (v) =>
+          !v ||
+          /^https?:\/\/(www\.)?(youtube\.com|youtu\.be|vimeo\.com)\/.+/.test(v),
+        message: "Invalid video URL",
+      },
+    },
+    read_time: {
+      type: String,
+      match: /^[0-9]+( min| hr)?$/,
     },
 
     isActive: {
