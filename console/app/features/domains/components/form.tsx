@@ -28,11 +28,12 @@ import { useFileUpload } from "@/hooks/use-file-upload";
 import { toast } from "sonner";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  useCreateCategoryMutation,
-  useUpdateCategoryMutation,
-  useGetCategoryByIdQuery,
-  useGetCategoriesQuery,
-} from "../data/categoryApi";
+  useCreateDomainMutation,
+  useUpdateDomainMutation,
+  useGetDomainByIdQuery,
+  useGetDomainsQuery,
+ 
+} from "../data/domainsApi";
 import {
   Select,
   SelectContent,
@@ -51,15 +52,15 @@ export default function DomainsForm({
   const isEdit = mode === "edit" || !!id;
 
   // ✅ Queries
-  const { data: categoryData, isLoading: loadingCategory } =
-    useGetCategoryByIdQuery(id, { skip: !isEdit });
-  const { data: allCategories } = useGetCategoriesQuery({
+  const { data: domainData, isLoading: loadingDomain } =
+    useGetDomainByIdQuery(id, { skip: !isEdit });
+  const { data: allDomains } = useGetDomainsQuery({
     page: 1,
     limit: 100,
   });
 
-  const [createCategory] = useCreateCategoryMutation();
-  const [updateCategory] = useUpdateCategoryMutation();
+  const [createDomain] = useCreateDomainMutation();
+  const [updateDomain] = useUpdateDomainMutation();
 
   const [values, setValues] = useState({
     name: "",
@@ -80,8 +81,8 @@ export default function DomainsForm({
 
   // ✅ Prefill for Edit Mode
   useEffect(() => {
-    if (categoryData?.data) {
-      const c = categoryData.data;
+    if (domainData?.data) {
+      const c = domainData.data;
       setValues({
         name: c.name || "",
         description: c.description || "",
@@ -99,7 +100,7 @@ export default function DomainsForm({
         totalBlogs: c.totalBlogs || 0,
       });
     }
-  }, [categoryData]);
+  }, [domainData]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -147,10 +148,10 @@ export default function DomainsForm({
         formData.append("icon", iconFiles[0].file as Blob);
 
       if (isEdit) {
-        await updateCategory({ id, formData }).unwrap();
+        await updateDomain({ id, formData }).unwrap();
         toast.success("Domain updated successfully!");
       } else {
-        await createCategory(formData).unwrap();
+        await createDomain(formData).unwrap();
         toast.success("Domain created successfully!");
         if (actionType === "create_another") {
           setValues({
@@ -177,7 +178,7 @@ export default function DomainsForm({
     }
   };
 
-  if (loadingCategory && isEdit) {
+  if (loadingDomain && isEdit) {
     return (
       <div className="flex justify-center items-center py-20">
         <Loader2 className="h-6 w-6 animate-spin text-primary" />
@@ -237,7 +238,7 @@ export default function DomainsForm({
                 <div>
                   <Label className="mb-2">Parent Domain</Label>
                   <Select
-                    key={`${values.parentDomain}-${allCategories?.data?.length || 0}`} // 👈 FORCE UPDATE
+                    key={`${values.parentDomain}-${allDomains?.data?.length || 0}`} // 👈 FORCE UPDATE
                     value={values.parentDomain || "none"}
                     onValueChange={(v) =>
                       handleChange("parentDomain", v === "none" ? "" : v)
@@ -249,7 +250,7 @@ export default function DomainsForm({
                     <SelectContent>
                       <SelectItem value="none">No Parent</SelectItem>
 
-                      {allCategories?.data
+                      {allDomains?.data
                         ?.filter((cat: any) => cat._id !== id)
                         .map((cat: any) => (
                           <SelectItem

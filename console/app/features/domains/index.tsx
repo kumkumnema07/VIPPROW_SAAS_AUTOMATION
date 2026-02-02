@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
 import {
-  useGetCategoriesQuery,
-  useDeleteCategoryMutation,
-  usePartiallyUpdateCategoryMutation,
-} from "./data/categoryApi";
+  useGetDomainsQuery,
+  useDeleteDomainMutation,
+  usePartiallyUpdateDomainMutation,
+} from "./data/domainsApi";
 import { DataTable, BulkActions } from "@/components/crud";
 import { type ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -30,40 +30,40 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export default function CategoryPage() {
+export default function DomainPage() {
   const navigate = useNavigate();
   const [page, setPage] = React.useState(1);
   const [limit, setLimit] = React.useState(10);
   const [tableInstance, setTableInstance] = React.useState<any>(null);
 
-  const { data, isLoading } = useGetCategoriesQuery({ page, limit });
-  const [deleteCategory] = useDeleteCategoryMutation();
-  const [partiallyUpdateCategory] = usePartiallyUpdateCategoryMutation();
+  const { data, isLoading } = useGetDomainsQuery({ page, limit });
+  const [deleteDomain] = useDeleteDomainMutation();
+  const [partiallyUpdateDomain] = usePartiallyUpdateDomainMutation();
 
-  const categoryData = data?.data ?? [];
+  const DomainData = data?.data ?? [];
   const totalPages = data?.pagination?.totalPages ?? 1;
 
   const handleDelete = async (item: any) => {
-    await toast.promise(deleteCategory(item._id).unwrap(), {
+    await toast.promise(deleteDomain(item._id).unwrap(), {
       loading: `Deleting ${item.name}...`,
-      success: `Category "${item.name}" deleted successfully!`,
-      error: "Failed to delete category.",
+      success: `Domain "${item.name}" deleted successfully!`,
+      error: "Failed to delete domain.",
     });
   };
 
-  const handleToggleActive = async (category: any) => {
+  const handleToggleActive = async (domain: any) => {
     try {
-      await partiallyUpdateCategory({
-        id: category._id,
-        data: { isActive: !category.isActive },
+      await partiallyUpdateDomain({
+        id: domain._id,
+        data: { isActive: !domain.isActive },
       }).unwrap();
       toast.success(
-        `Category "${category.name}" has been ${
-          category.isActive ? "deactivated" : "activated"
+        `Domain "${domain.name}" has been ${
+          domain.isActive ? "deactivated" : "activated"
         }.`
       );
     } catch {
-      toast.error("Failed to update category status.");
+      toast.error("Failed to update domain status.");
     }
   };
 
@@ -112,12 +112,12 @@ export default function CategoryPage() {
       ),
     },
     {
-      accessorKey: "parentCategory",
+      accessorKey: "parentDomain",
       header: "Parent Domain",
       cell: ({ row }) => {
         return (
           <span className="text-sm text-muted-foreground">
-            {row.original.parentCategory?.name ?? "—"}
+            {row.original.parentDomain?.name ?? "—"}
           </span>
         );
       },
@@ -141,7 +141,7 @@ export default function CategoryPage() {
       id: "actions",
       header: "Actions",
       cell: ({ row, table }) => {
-        const category = row.original;
+        const domain = row.original;
         return (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -153,13 +153,13 @@ export default function CategoryPage() {
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem
-                onClick={() => navigate(`/admin/category/edit/${category._id}`)}
+                onClick={() => navigate(`/admin/domain/edit/${domain._id}`)}
               >
                 <Pencil className="mr-2 h-4 w-4" /> Edit
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() =>
-                  (table.options.meta as any)?.openDeleteDialog(category)
+                  (table.options.meta as any)?.openDeleteDialog(domain)
                 }
                 className="text-red-600 focus:text-red-600"
               >
@@ -182,12 +182,12 @@ export default function CategoryPage() {
       </div>
 
       {tableInstance && (
-        <BulkActions table={tableInstance} entityName="category" />
+        <BulkActions table={tableInstance} entityName="domain" />
       )}
 
       <DataTable
         columns={columns}
-        data={categoryData}
+        data={DomainData}
         isLoading={isLoading}
         searchKey="name"
         pagination={{

@@ -16,10 +16,13 @@ import { blogApi } from "~/features/blog/data/blogApi";
 // 🗂 Course Feature
 import courseReducer from "~/features/course/data/courseSlice";
 import { courseApi } from "~/features/course/data/courseApi";
-
 // 🗂 Category Feature
 import categoryReducer from "~/features/category/data/categorySlice";
 import { categoryApi } from "~/features/category/data/categoryApi";
+
+// 🗂 Domain Feature
+import domainReducer from "~/features/domains/data/domainsSlice";
+import { domainApi } from "~/features/domains/data/domainsApi";
 
 // ⚙️ Service Feature
 import serviceReducer from "~/features/service/data/serviceSlice";
@@ -70,6 +73,10 @@ export const store = configureStore({
     category: categoryReducer,
     [categoryApi.reducerPath]: categoryApi.reducer,
 
+// ✅ Domain state + API
+    domain: domainReducer,
+    [domainApi.reducerPath]: domainApi.reducer,
+
     // ✅ Service state + API
     service: serviceReducer,
     [serviceApi.reducerPath]: serviceApi.reducer,
@@ -104,6 +111,7 @@ export const store = configureStore({
       blogApi.middleware,
       courseApi.middleware,
       categoryApi.middleware,
+      domainApi.middleware,
       serviceApi.middleware,
       policyApi.middleware,
       testimonialApi.middleware,
