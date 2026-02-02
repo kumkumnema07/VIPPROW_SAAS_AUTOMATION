@@ -6,7 +6,6 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
 import { Switch } from "@/components/ui/switch";
 import {
   Card,
@@ -25,9 +24,6 @@ import {
   useGetTestimonialByIdQuery,
 } from "../data/testimonialApi";
 import { RichTextEditor } from "~/components/crud/RichTextEditor";
-import { Textarea } from "~/components/ui/textarea";
-
-const SHORT_DESC_LIMIT = 300;
 
 // ✅ Validation helper
 const validate = (values: any) => {
@@ -39,12 +35,6 @@ const validate = (values: any) => {
 
   if (values.designation && values.designation.length > 100)
     errors.designation = "Designation cannot exceed 100 characters.";
-  if (!values.short_description.trim()) {
-    errors.short_description = "Short description is required.";
-  } else if (values.short_description.length > 300) {
-    errors.short_description =
-      "Short description must be under 300 characters.";
-  }
 
   if (!values.description.trim())
     errors.description = "Description is required.";
@@ -79,13 +69,8 @@ export default function TestimonialForm({
     name: "",
     designation: "",
     description: "",
-    short_description: "",
     avatar: null as string | null,
     rating: 5,
-
-    thumbnail: null as string | null,
-    gallery_images: [] as string[],
-
     isActive: true,
   });
 
@@ -100,32 +85,12 @@ export default function TestimonialForm({
         name: t.name || "",
         designation: t.designation || "",
         description: t.description || "",
-        short_description: t.short_description || "",
         avatar: t.avatar || null,
-
-        thumbnail: t.thumbnail || null,
-        gallery_images: t.gallery_images || [],
-
         rating: t.rating ?? 5,
         isActive: t.isActive ?? true,
       });
     }
   }, [testimonialData]);
-
-  /* ---------------------------------------------
-          FILE thum
-    --------------------------------------------- */
-  const [
-    { files: thumbFiles, isDragging: thumbDrag, errors: thumbErrors },
-    thumbHandlers,
-  ] = useFileUpload({ accept: "image/*", maxSize: 5 * 1024 * 1024 });
-
-  const [
-    { files: galleryFiles, isDragging: galleryDrag, errors: galleryErrors },
-    galleryHandlers,
-  ] = useFileUpload({ accept: "image/*", multiple: true });
-
-  const thumbPreview = thumbFiles[0]?.preview || values.thumbnail || null;
 
   // ✅ File Upload (Avatar)
   const [
@@ -135,15 +100,9 @@ export default function TestimonialForm({
 
   const avatarPreview = avatarFiles?.[0]?.preview || values.avatar || null;
 
-  /* ---------------------------------------------
-        CHANGE HANDLER
-  --------------------------------------------- */
-
   const handleChange = (name: string, value: any) => {
-    if (name === "short_description" && value.length > SHORT_DESC_LIMIT) return;
-
     setValues((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: "" }));
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   // ✅ Submit Handler
@@ -164,16 +123,11 @@ export default function TestimonialForm({
       formData.append("name", values.name.trim());
       formData.append("designation", values.designation.trim());
       formData.append("description", values.description.trim());
-      formData.append("short_description", values.short_description);
-      /* THUMBNAIL */
-      if (thumbFiles.length > 0) {
-        formData.append("thumbnail", thumbFiles[0].file as Blob);
-      }
       formData.append("rating", String(values.rating));
       formData.append("isActive", String(values.isActive));
 
-      // if (avatarFiles.length > 0)
-      //   formData.append("avatar", avatarFiles[0].file as Blob);
+      if (avatarFiles.length > 0)
+        formData.append("avatar", avatarFiles[0].file as Blob);
 
       if (isEdit) {
         if (!id) {
@@ -188,19 +142,14 @@ export default function TestimonialForm({
         toast.success("✅ Testimonial created successfully!");
 
         if (actionType === "create_another") {
-          const DEFAULT_VALUES = {
+          setValues({
             name: "",
             designation: "",
             description: "",
-            short_description: "",
-            avatar: null as string | null,
-            thumbnail: null as string | null,
+            avatar: null,
             rating: 5,
             isActive: true,
-          };
-
-          const [values, setValues] = useState(DEFAULT_VALUES);
-
+          });
           setErrors({});
           return;
         }
@@ -282,36 +231,6 @@ export default function TestimonialForm({
                       {errors.designation}
                     </p>
                   )}
-                </div>
-
-                {/* SHORT DESCRIPTION */}
-                <div>
-                  <Label className="mb-2">Short Description</Label>
-                  <Textarea
-                    value={values.short_description}
-                    onChange={(e) =>
-                      handleChange("short_description", e.target.value)
-                    }
-                    className={`resize-none ${
-                      values.short_description.length > SHORT_DESC_LIMIT
-                        ? "border-red-500 focus-visible:ring-red-500"
-                        : ""
-                    }`}
-                  />
-
-                  <div className="flex justify-between mt-1">
-                    {values.short_description.length > SHORT_DESC_LIMIT ? (
-                      <p className="text-xs text-red-500">
-                        Short description must be under {SHORT_DESC_LIMIT}{" "}
-                        characters
-                      </p>
-                    ) : (
-                      <span className="text-xs text-muted-foreground">
-                        {values.short_description.length}/{SHORT_DESC_LIMIT}{" "}
-                        characters
-                      </span>
-                    )}
-                  </div>
                 </div>
 
                 {/* Rating */}
@@ -423,67 +342,6 @@ export default function TestimonialForm({
                 </div>
                 {avatarErrors[0] && (
                   <p className="text-xs text-red-500 mt-1">{avatarErrors[0]}</p>
-                )}
-              </CardContent>
-            </Card>
-
-            {/* THUMBNAIL */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Thumbnail</CardTitle>
-              </CardHeader>
-
-              <CardContent>
-                <div
-                  className={`border-2 border-dashed p-6 rounded-xl ${
-                    thumbDrag ? "border-primary bg-accent" : ""
-                  }`}
-                  onDragEnter={thumbHandlers.handleDragEnter}
-                  onDragLeave={thumbHandlers.handleDragLeave}
-                  onDragOver={thumbHandlers.handleDragOver}
-                  onDrop={thumbHandlers.handleDrop}
-                >
-                  <input
-                    {...thumbHandlers.getInputProps()}
-                    className="sr-only"
-                  />
-
-                  {thumbPreview ? (
-                    <div className="relative h-48">
-                      <img
-                        src={thumbPreview}
-                        className="w-full h-full object-cover rounded"
-                      />
-
-                      <button
-                        type="button"
-                        className="absolute top-2 right-2 bg-black/60 text-white rounded-full p-1"
-                        onClick={() => {
-                          thumbHandlers.clearFiles();
-                          setValues((p) => ({ ...p, thumbnail: null }));
-                        }}
-                      >
-                        <XIcon className="h-4 w-4" />
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="text-center">
-                      <ImageIcon className="h-6 w-6 mx-auto opacity-70" />
-                      <p className="text-sm mt-2">Upload thumbnail</p>
-                      <Button
-                        type="button"
-                        variant="outline"
-                        onClick={thumbHandlers.openFileDialog}
-                        className="mt-2"
-                      >
-                        <UploadIcon className="h-4 w-4 mr-2" /> Select Image
-                      </Button>
-                    </div>
-                  )}
-                </div>
-
-                {thumbErrors[0] && (
-                  <p className="text-xs text-red-500">{thumbErrors[0]}</p>
                 )}
               </CardContent>
             </Card>

@@ -64,7 +64,7 @@ export default function CourseForm({
   --------------------------------------------- */
   const { data: courseData, isLoading: loadingCourse } = useGetCourseByIdQuery(
     id!,
-    { skip: !isEdit }
+    { skip: !isEdit },
   );
 
   const { data: categoryData } = useGetCategoriesQuery({
@@ -251,7 +251,7 @@ export default function CourseForm({
       formData.append("remove_gallery", JSON.stringify(removedImages));
 
       galleryFiles.forEach((f) =>
-        formData.append("gallery_images", f.file as Blob)
+        formData.append("gallery_images", f.file as Blob),
       );
 
       /* SUBMIT */
