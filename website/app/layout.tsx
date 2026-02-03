@@ -1,23 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Poppins } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import Footer from "./components/ui/Footer";
-import { SmoothCursor } from "@/components/ui/smooth-cursor";
-import { NavbarMenu } from "./components/ui/Navbar";
-import ReduxProvider from "@/providers/ReduxProvider";
-import QueryProvider from "@/providers/QueryProvider";
-import AppConfigLoader from "@/providers/AppConfigLoader";
-import { Toaster } from "react-hot-toast";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import ClinetLayout from "@/components/client-sections/ClientLayout";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -47,21 +31,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${poppins.variable} antialiased bg-black`}
       >
-        <ReduxProvider>
-          <QueryProvider>
-            <AppConfigLoader />
-            <NavbarMenu />
-            {process.env.NODE_ENV === "development" ? null : (
-              <div className="hidden lg:block">
-                <SmoothCursor />
-              </div>
-            )}
-
-            {children}
-            <Footer />
-            <Toaster position="bottom-center" />
-          </QueryProvider>
-        </ReduxProvider>
+        <ClinetLayout>{children}</ClinetLayout>
       </body>
     </html>
   );
