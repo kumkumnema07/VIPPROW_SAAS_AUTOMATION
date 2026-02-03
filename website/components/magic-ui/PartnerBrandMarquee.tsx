@@ -118,8 +118,8 @@ export default function PartnerBrandMarquee() {
   return (
     <div className="relative flex w-full max-w-7xl flex-col items-center justify-center overflow-hidden mx-auto h-32">
       <Marquee pauseOnHover className="[--duration:40s] !gap-0">
-        {firstRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
+        {firstRow.map((review, idx) => (
+          <ReviewCard key={`${review.username}-${idx}`} {...review} />
         ))}
       </Marquee>
       <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-black-to-r"></div>

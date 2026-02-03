@@ -107,41 +107,60 @@ const Skeleton = () => {
     </div>
   );
 };
+
+
+
 const Sparkles = () => {
-  const randomMove = () => Math.random() * 2 - 1;
-  const randomOpacity = () => Math.random();
-  const random = () => Math.random();
+  const [stars, setStars] = React.useState<
+    {
+      top: number;
+      left: number;
+      opacity: number;
+      duration: number;
+    }[]
+  >([]);
+
+  // Generate randomness ONLY on client after mount
+  React.useEffect(() => {
+    const generated = Array.from({ length: 12 }).map(() => ({
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      opacity: Math.random(),
+      duration: Math.random() * 2 + 4,
+    }));
+    setStars(generated);
+  }, []);
+
   return (
     <div className="absolute inset-0">
-      {[...Array(12)].map((_, i) => (
+      {stars.map((star, i) => (
         <motion.span
           key={`star-${i}`}
           animate={{
-            top: `calc(${random() * 100}% + ${randomMove()}px)`,
-            left: `calc(${random() * 100}% + ${randomMove()}px)`,
-            opacity: randomOpacity(),
+            opacity: [star.opacity, 1, 0],
             scale: [1, 1.2, 0],
           }}
           transition={{
-            duration: random() * 2 + 4,
+            duration: star.duration,
             repeat: Infinity,
             ease: "linear",
           }}
           style={{
             position: "absolute",
-            top: `${random() * 100}%`,
-            left: `${random() * 100}%`,
-            width: `2px`,
-            height: `2px`,
+            top: `${star.top}%`,
+            left: `${star.left}%`,
+            width: "2px",
+            height: "2px",
             borderRadius: "50%",
             zIndex: 1,
           }}
           className="inline-block bg-black dark:bg-white"
-        ></motion.span>
+        />
       ))}
     </div>
   );
 };
+
 
 export const Card = ({
   className,
@@ -303,9 +322,9 @@ export const GeminiLogo = ({ className }: { className?: string }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="matrix(16.1326 5.4553 -43.70045 129.2322 1.588 6.503)"
         >
-          <stop offset=".067" stop-color="#9168C0" />
-          <stop offset=".343" stop-color="#5684D1" />
-          <stop offset=".672" stop-color="#1BA1E3" />
+          <stop offset=".067" stopColor="#9168C0" />
+          <stop offset=".343" stopColor="#5684D1" />
+          <stop offset=".672" stopColor="#1BA1E3" />
         </radialGradient>
       </defs>
     </svg>
@@ -331,10 +350,10 @@ export const MetaIconOutline = ({ className }: { className?: string }) => {
           gradientTransform="matrix(1, 0, 0, -1, 0, 192)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#0064e1" />
-          <stop offset="0.4" stop-color="#0064e1" />
-          <stop offset="0.83" stop-color="#0073ee" />
-          <stop offset="1" stop-color="#0082fb" />
+          <stop offset="0" stopColor="#0064e1" />
+          <stop offset="0.4" stopColor="#0064e1" />
+          <stop offset="0.83" stopColor="#0073ee" />
+          <stop offset="1" stopColor="#0082fb" />
         </linearGradient>
         <linearGradient
           id="linear-gradient-2"
@@ -345,8 +364,8 @@ export const MetaIconOutline = ({ className }: { className?: string }) => {
           gradientTransform="matrix(1, 0, 0, -1, 0, 192)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#0082fb" />
-          <stop offset="1" stop-color="#0064e0" />
+          <stop offset="0" stopColor="#0082fb" />
+          <stop offset="1" stopColor="#0064e0" />
         </linearGradient>
       </defs>
       <path
