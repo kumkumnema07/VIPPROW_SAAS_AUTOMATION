@@ -16,7 +16,7 @@ export default function CompanyPage() {
       {/* Company Story Start */}
       <div className="pt-20 max-w-7xl mx-auto">
         <CompanyStory />
-      <ServiceCardGrid />
+        <ServiceCardGrid />
       </div>
       {/* Company Story End */}
 

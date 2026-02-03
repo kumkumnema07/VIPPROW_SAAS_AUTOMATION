@@ -1,4 +1,3 @@
-import { ClientCardCarousel } from "@/components/aceternity-ui/ClientCardCarousel";
 import { HeroHighlightSection } from "@/components/aceternity-ui/HeroHighlightSection";
 import ClientCTA from "@/components/client-sections/ClientCTA";
 import ServiceGridScroller from "@/components/ui/cards/ServiceGridScroller";
@@ -18,12 +17,6 @@ export default function ServicesPage() {
         <ServiceGridScroller />
       </div>
       {/* Service Tab Grid End. */}
-
-      {/* Client Cards Start */}
-      <div className="max-w-7xl mx-auto">
-        <ClientCardCarousel />
-      </div>
-      {/* Client Cards End */}
 
       {/* CTA Start */}
       <div className="pt-20 max-w-7xl mx-auto">
