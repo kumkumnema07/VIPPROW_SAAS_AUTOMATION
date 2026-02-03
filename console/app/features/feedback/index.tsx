@@ -7,11 +7,8 @@ import {
 } from "@/components/ui/dialog";
 
 import FeedbackForm from "./components/form";
-import { useNavigate } from "react-router";
 
 export default function FeedbackModalPage() {
-  const navigate = useNavigate();
-
   return (
     <Dialog open>
       <DialogContent
