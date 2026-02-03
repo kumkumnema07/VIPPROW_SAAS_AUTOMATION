@@ -28,11 +28,11 @@ export default [
       ...createCrudRoutes("user-certificate"),
       ...createCrudRoutes("gallery"),
       ...createCrudRoutes("contact"),
-      // ...createCrudRoutes("career"),
-      // ...createCrudRoutes("case-study"),
-      // ...createCrudRoutes("feedback"),
-      // ...createCrudRoutes("support"),
       ...createCrudRoutes("domains"),
+
+      // Single Routes -> Model / Pop Form / Chat Box / AI Agents / Etc.
+
+       route("feedback", "features/feedback/index.tsx"),
 
 
       // Add other custom routes freelya
