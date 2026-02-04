@@ -54,7 +54,7 @@ const data = () => ({
   ],
 });
 
-export default function Footer() {
+export default function FooterStandard() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -68,7 +68,7 @@ export default function Footer() {
 
   return (
     <footer className="mt-20 w-full">
-      <div className="animate-energy-flow via-blue-600 h-px w-full bg-gradient-to-r from-transparent to-transparent" />
+      <div className="animate-energy-flow via-primary h-px w-full bg-gradient-to-r from-transparent to-transparent" />
       <div className="relative w-full px-5">
         {/* Top Section */}
         <div className="container m-auto grid grid-cols-1 gap-12 py-12 md:grid-cols-2 lg:grid-cols-5">
@@ -76,12 +76,13 @@ export default function Footer() {
           <div className="space-y-6 lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-3">
               <Image
-                src="/assets/images/logo/vipprow_logo.svg"
+                src="https://i.postimg.cc/j5dW4vFd/Mvpblocks.webp"
                 alt="Logo"
                 width={200}
                 height={200}
-                className=""
+                className="size-10"
               />
+              <span className="text-xl font-semibold">Mvpblocks</span>
             </Link>
             <p className="text-muted-foreground max-w-md">
               Building innovative solutions for modern businesses. Fast,
@@ -95,7 +96,7 @@ export default function Footer() {
                     size="icon"
                     variant="outline"
                     asChild
-                    className="hover:bg-primary dark:hover:bg-blue-600 !border-primary/30 !hover:border-primary cursor-pointer shadow-none transition-all duration-500 hover:scale-110 hover:-rotate-12 hover:text-white hover:shadow-md"
+                    className="hover:bg-primary dark:hover:bg-primary !border-primary/30 !hover:border-primary cursor-pointer shadow-none transition-all duration-500 hover:scale-110 hover:-rotate-12 hover:text-white hover:shadow-md"
                   >
                     <Link href={href}>
                       <Icon className="h-4 w-4" />
@@ -107,7 +108,7 @@ export default function Footer() {
                 variant="outline"
                 size="icon"
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="hover:bg-primary dark:hover:bg-blue-600 !border-primary/30 !hover:border-primary cursor-pointer shadow-none transition-all duration-1000 hover:scale-110 hover:-rotate-12 hover:text-white hover:shadow-md"
+                className="hover:bg-primary dark:hover:bg-primary !border-primary/30 !hover:border-primary cursor-pointer shadow-none transition-all duration-1000 hover:scale-110 hover:-rotate-12 hover:text-white hover:shadow-md"
               >
                 {theme === 'dark' ? (
                   <Sun className="h-4 w-4" />
@@ -134,7 +135,7 @@ export default function Footer() {
                 />
                 <Button
                   type="submit"
-                  className="hover:bg-blue-600 hover:text-white absolute top-1.5 right-1.5 cursor-pointer transition-all duration-1000 hover:px-10"
+                  className="absolute top-1.5 right-1.5 cursor-pointer transition-all duration-1000 hover:px-10"
                 >
                   Subscribe
                 </Button>
@@ -143,8 +144,8 @@ export default function Footer() {
                 Get the latest updates, tutorials, and exclusive offers.
               </p>
             </form>
-            <h1 className="font-heading from-muted-foreground/15 bg-gradient-to-b bg-clip-text text-5xl font-extrabold text-transparent lg:text-7xl">
-              Vipprow line
+            <h1 className="from-muted-foreground/15 bg-gradient-to-b bg-clip-text text-5xl font-extrabold text-transparent lg:text-7xl">
+              Developer
             </h1>
           </div>
 
@@ -161,7 +162,7 @@ export default function Footer() {
                       <li key={item.name}>
                         <Link
                           href={item.href}
-                          className="group text-muted-foreground hover:text-blue-500 decoration-blue-600 -ml-5 inline-flex items-center gap-2 underline-offset-8 transition-all duration-500 hover:pl-5 hover:underline"
+                          className="group text-muted-foreground hover:text-foreground decoration-primary -ml-5 inline-flex items-center gap-2 underline-offset-8 transition-all duration-500 hover:pl-5 hover:underline"
                         >
                           <ArrowDownLeft className="text-primary rotate-[225deg] opacity-30 transition-all duration-500 group-hover:scale-150 group-hover:opacity-100 sm:group-hover:rotate-[225deg] md:rotate-0" />
                           {item.name}
@@ -176,10 +177,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="animate-rotate-3d via-blue-600 h-px w-full bg-gradient-to-r from-transparent to-transparent" />
+        <div className="animate-rotate-3d via-primary h-px w-full bg-gradient-to-r from-transparent to-transparent" />
         <div className="text-muted-foreground container m-auto flex flex-col items-center justify-between gap-4 p-4 text-xs md:flex-row md:px-0 md:text-sm">
           <p className="">
-            &copy; {currentYear} Vipprow | All rights reserved
+            &copy; {currentYear} Mvpblocks | All rights reserved
           </p>
           <div className="flex items-center gap-4">
             {data().bottomLinks.map(({ href, label }) => (
@@ -189,7 +190,7 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <span className="from-blue-600/60 absolute inset-x-0 bottom-0 left-0 -z-10 h-1/3 w-full bg-gradient-to-t" />
+        <span className="from-primary/20 absolute inset-x-0 bottom-0 left-0 -z-10 h-1/3 w-full bg-gradient-to-t" />
       </div>
 
       {/* Animations */}
