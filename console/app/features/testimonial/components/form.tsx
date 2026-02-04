@@ -172,8 +172,8 @@ export default function TestimonialForm({
       formData.append("rating", String(values.rating));
       formData.append("isActive", String(values.isActive));
 
-      // if (avatarFiles.length > 0)
-      //   formData.append("avatar", avatarFiles[0].file as Blob);
+      if (avatarFiles.length > 0)
+        formData.append("avatar", avatarFiles[0].file as Blob);
 
       if (isEdit) {
         if (!id) {
@@ -267,7 +267,7 @@ export default function TestimonialForm({
 
                 {/* Designation */}
                 <div>
-                  <Label className="mb-2">Brand Preview</Label>
+                  <Label className="mb-2">Designation</Label>
                   <Input
                     value={values.designation}
                     placeholder="Enter Brand Preview"

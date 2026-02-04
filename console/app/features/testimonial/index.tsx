@@ -127,7 +127,7 @@ export default function TestimonialPage() {
     },
     {
       accessorKey: "designation",
-      header: "Brand Preview",
+      header: "Designation",
       cell: ({ row }) => (
         <span className="text-muted-foreground">
           {row.original.designation || "-"}

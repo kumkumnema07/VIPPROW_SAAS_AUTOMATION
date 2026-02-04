@@ -30,11 +30,8 @@ export default [
       ...createCrudRoutes("contact"),
       // ...createCrudRoutes("career"),
       // ...createCrudRoutes("case-study"),
-<<<<<<< HEAD
-      ...createCrudRoutes("feedback"),
-=======
       // ...createCrudRoutes("feedback"),
->>>>>>> e91a55fda9995b3a744c797892bb85c46f14374f
+      
       // ...createCrudRoutes("support"),
       ...createCrudRoutes("domains"),
 
@@ -43,6 +40,8 @@ export default [
       //   route("reports", "features/reports/index.tsx"),
       //   route("reports/sales", "features/reports/sales-wrapper.tsx"),
     ]),
+
+    route("feedback", "features/feedback/index.tsx"),
 
     route("users/profile", "routes/protected/user-wrapper.tsx"),
   ]),
