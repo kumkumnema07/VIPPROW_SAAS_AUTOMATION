@@ -164,8 +164,8 @@ export default function SaasHeroSection() {
         </div>
 
         {/* Enhanced glow spots */}
-        <div className="absolute top-20 -left-20 h-60 w-60 rounded-full bg-blue-600/20 blur-[100px]"></div>
-        <div className="absolute -right-20 bottom-20 h-60 w-60 rounded-full bg-blue-600/20 blur-[100px]"></div>
+        <div className="absolute top-20 -left-20 h-60 w-60 rounded-full bg-blue-600/20/20 blur-[100px]"></div>
+        <div className="absolute -right-20 bottom-20 h-60 w-60 rounded-full bg-blue-600/20/20 blur-[100px]"></div>
         <motion.div
           animate={glowAnimation}
           className="absolute top-1/3 left-1/4 h-40 w-40 rounded-full bg-blue-500/10 blur-[80px]"
@@ -264,10 +264,10 @@ export default function SaasHeroSection() {
 
             <motion.h1
               variants={itemVariants}
-              className="font-heading mb-6 bg-gradient-to-r from-white/70 via-white to-slate-500/80 bg-clip-text text-3xl leading-tight text-transparent sm:text-4xl md:text-2xl lg:text-6xl"
+              className="font-heading mb-6 bg-gradient-to-r from-white/70 via-white to-blue-500/100 bg-clip-text text-3xl leading-tight text-transparent sm:text-4xl md:text-2xl lg:text-6xl"
             >
               The Bridge Between <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-blue-600 via-blue-600 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-600/20/20 via-blue-600/20 to-blue-600/20 bg-clip-text text-transparent">
                 AI and Web3
               </span>
             </motion.h1>
@@ -361,7 +361,7 @@ export default function SaasHeroSection() {
                     key={i}
                     className="h-6 w-6 overflow-hidden rounded-full border-2 border-slate-900 bg-slate-800"
                   >
-                    <div className="h-full w-full bg-gradient-to-br from-blue-500 to-blue-600 opacity-80"></div>
+                    <div className="h-full w-full bg-gradient-to-br from-blue-500 to-blue-600/20 opacity-80"></div>
                   </div>
                 ))}
               </div>

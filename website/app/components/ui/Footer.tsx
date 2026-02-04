@@ -189,7 +189,7 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <span className="from-blue-600/60 absolute inset-x-0 bottom-0 left-0 -z-10 h-1/3 w-full bg-gradient-to-t" />
+        <span className="from-blue-600/20 absolute inset-x-0 bottom-0 left-0 -z-10 h-1/3 w-full bg-gradient-to-t" />
       </div>
 
       {/* Animations */}
