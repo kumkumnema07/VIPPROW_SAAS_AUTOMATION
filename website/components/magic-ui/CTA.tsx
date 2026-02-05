@@ -10,8 +10,8 @@ export default function CTA() {
     <div className="relative h-[320px] md:h-[520px] w-full overflow-hidden rounded-2xl bg-black">
       <div className="flex h-full w-full flex-col items-center justify-center">
         <GradientBars />
-        <TextReveal className="font-heading font-semibold text-foreground text-center text-4xl">
-          Call to action.
+        <TextReveal className="font-heading text-foreground text-center text-4xl">
+        Smart Automation, Real Growth!
         </TextReveal>
         {/* CTA Buttons */}
         <div className="mt-10 flex flex-row gap-4 z-1">

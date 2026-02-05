@@ -22,6 +22,7 @@ export default [
       ...createCrudRoutes("course"),
       ...createCrudRoutes("category"),
       ...createCrudRoutes("service"),
+      ...createCrudRoutes("career"),
       ...createCrudRoutes("policy"),
       ...createCrudRoutes("testimonial"),
       ...createCrudRoutes("certificate"),
@@ -32,7 +33,7 @@ export default [
 
       // Single Routes -> Model / Pop Form / Chat Box / AI Agents / Etc.
 
-       route("feedback", "features/feedback/index.tsx"),
+      //  route("feedback", "features/feedback/index.tsx"),
 
 
       // Add other custom routes freelya

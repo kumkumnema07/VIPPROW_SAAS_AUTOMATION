@@ -4,23 +4,35 @@ import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { GoCopilot } from "react-icons/go";
 import Link from "next/link";
+import { IconType } from "react-icons/lib";
 
+// interface AnimatedSVGCardProp {
+//   href: string | "#";
+// }
 interface AnimatedSVGCardProp {
-  href: string | "#";
+  href: string;
+  title: string;
+  description: string;
+  // icon: IconType;
 }
 
-export function AnimatedSVGCard({ href }: AnimatedSVGCardProp) {
+export function AnimatedSVGCard({
+  href,
+  title,
+  description,
+  // icon: Icon,
+}: AnimatedSVGCardProp) {
   return (
     <Link href={href}>
       <Card>
         <CardSkeletonContainer>
+           {/* <div className="h-full flex items-center justify-center">
+            <Icon className="h-10 w-10 text-white" />
+            </div> */}
           <Skeleton />
         </CardSkeletonContainer>
-        <CardTitle>Vipprow Elit Card</CardTitle>
-        <CardDescription>
-          A card that showcases a set of tools that you use to create your
-          product.
-        </CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </Card>
     </Link>
   );
@@ -108,8 +120,6 @@ const Skeleton = () => {
   );
 };
 
-
-
 const Sparkles = () => {
   const [stars, setStars] = React.useState<
     {
@@ -160,7 +170,6 @@ const Sparkles = () => {
     </div>
   );
 };
-
 
 export const Card = ({
   className,

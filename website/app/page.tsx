@@ -24,8 +24,8 @@ export default function Home() {
         {/* Services Start */}
         <div className="pt-20 max-w-7xl mx-auto">
           <PrimaryHeading
-            heading="Empower Your Workflow with AI"
-            des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
+            heading="We Empower Brands Through"
+            des="Strategic digital marketing, intelligent software, and automation solutions designed to accelerate growth.."
           />
           <ServiceCardGrid />
         </div>
@@ -34,8 +34,8 @@ export default function Home() {
         {/* Bento Grid Start */}
         <div className="pt-20">
           <PrimaryHeading
-            heading="Empower Your Workflow with AI"
-            des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
+            heading="Let Automation Do the Work. You Drive Growth."
+            des="Simplify operations, improve productivity, and accelerate business growth effortlessly.."
           />
           <ClientBentoGridSection />
         </div>
@@ -44,8 +44,8 @@ export default function Home() {
         {/* Testimonial Start */}
         <div className="pt-20 max-w-7xl mx-auto">
           <PrimaryHeading
-            heading="Empower Your Workflow with AI"
-            des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
+            heading="Client Experiences That Matter"
+            des="Authentic stories from brands that achieved measurable growth through Vipprow’s strategic approach."
           />
           <ClientTestimonialMarquee />
         </div>
@@ -54,8 +54,8 @@ export default function Home() {
         {/* Editorial Grid Start */}
         <div className="pt-20 max-w-7xl mx-auto">
           <PrimaryHeading
-            heading="Empower Your Workflow with AI"
-            des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
+            heading="Success Powered by Vipprow"
+            des="Proven success driven by intelligent strategies and scalable solutions."
           />
           <EditorialGrid itemsPerPage={3} />
         </div>

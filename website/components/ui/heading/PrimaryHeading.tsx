@@ -4,7 +4,7 @@ interface PrimaryHeadingProps {
 }
 
 export default function PrimaryHeading({
-  heading = "Heading",
+    heading = "Heading",
   des = "Des",
 }: PrimaryHeadingProps) {
   return (
