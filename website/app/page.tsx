@@ -6,6 +6,13 @@ import ClientCTA from "@/components/client-sections/ClientCTA";
 import ClientTestimonialMarquee from "@/components/client-sections/ClientTestimonialMarquee";
 import ClientBentoGridSection from "@/components/client-sections/ClientBentoGridSection";
 import ClientPartnerBrandMarquee from "@/components/client-sections/ClientPartnerBrandMarquee";
+import { Metadata } from "next";
+import FaqSection from "@/components/mvpblock-ui/FAQSection";
+
+export const metadata: Metadata = {
+  title: "ABC VIPPROW",
+  description: "VIPPROW Landing",
+};
 
 export default function Home() {
   return (
@@ -53,6 +60,12 @@ export default function Home() {
           <EditorialGrid itemsPerPage={3} />
         </div>
         {/* Editorial Grid End */}
+
+        {/* FAQ Start */}
+        <div className="pt-20 max-w-7xl mx-auto">
+          <FaqSection />
+        </div>
+        {/* FAQ End */}
 
         {/* CTA Start */}
         <div className="pt-20 max-w-7xl mx-auto">

@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { easeInOut, motion, spring } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from 'react';
+import { easeInOut, motion, spring } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 import {
   ArrowRight,
   Database,
   Sparkles,
   Zap,
   ArrowUpRight,
-} from "lucide-react";
+} from 'lucide-react';
 
-export default function SaasHeroSection() {
+export default function AppHero() {
   // State for animated counters
   const [stats, setStats] = useState({
     users: 0,
@@ -84,7 +84,7 @@ export default function SaasHeroSection() {
     transition: {
       duration: 20,
       repeat: Infinity,
-      ease: "linear",
+      ease: 'linear',
     },
   };
 
@@ -120,13 +120,13 @@ export default function SaasHeroSection() {
     transition: {
       duration: 2,
       repeat: Infinity,
-      ease: "easeInOut",
+      ease: 'easeInOut',
     },
   };
 
   return (
     <section className="relative flex min-h-screen w-full flex-col items-center overflow-hidden bg-black py-16 text-white sm:px-6 lg:px-8 lg:py-2">
-      <div className="absolute inset-0 z-0 h-full w-full rotate-180 items-center px-5 py-24 opacity-80 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#3633ee_100%)]"></div>
+      <div className="absolute inset-0 z-0 h-full w-full rotate-180 items-center px-5 py-24 opacity-80 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
       <svg
         id="noice"
         className="absolute inset-0 z-10 h-full w-full opacity-30"
@@ -156,7 +156,7 @@ export default function SaasHeroSection() {
       {/* Background effects */}
       <div className="absolute inset-0 z-0">
         {/* Radial gradient */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/100 via-black/70 to-gray-950 blur-3xl"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/30 via-black/70 to-gray-950 blur-3xl"></div>
 
         {/* Grid pattern */}
         <div className="absolute inset-0 opacity-10">
@@ -164,15 +164,15 @@ export default function SaasHeroSection() {
         </div>
 
         {/* Enhanced glow spots */}
-        <div className="absolute top-20 -left-20 h-60 w-60 rounded-full bg-blue-600/20/20 blur-[100px]"></div>
-        <div className="absolute -right-20 bottom-20 h-60 w-60 rounded-full bg-blue-600/20/20 blur-[100px]"></div>
+        <div className="absolute top-20 -left-20 h-60 w-60 rounded-full bg-purple-600/20 blur-[100px]"></div>
+        <div className="absolute -right-20 bottom-20 h-60 w-60 rounded-full bg-blue-600/20 blur-[100px]"></div>
         <motion.div
           animate={glowAnimation}
-          className="absolute top-1/3 left-1/4 h-40 w-40 rounded-full bg-blue-500/10 blur-[80px]"
+          className="absolute top-1/3 left-1/4 h-40 w-40 rounded-full bg-indigo-500/10 blur-[80px]"
         ></motion.div>
         <motion.div
           animate={glowAnimation}
-          className="absolute right-1/4 bottom-1/3 h-40 w-40 rounded-full bg-blue-500/10 blur-[80px]"
+          className="absolute right-1/4 bottom-1/3 h-40 w-40 rounded-full bg-purple-500/10 blur-[80px]"
         ></motion.div>
 
         {/* Particle effects - subtle dots */}
@@ -192,7 +192,7 @@ export default function SaasHeroSection() {
               transition={{
                 duration: 3 + Math.random() * 2,
                 repeat: Infinity,
-                ease: "easeInOut",
+                ease: 'easeInOut',
                 delay: Math.random() * 2,
               }}
             />
@@ -208,11 +208,11 @@ export default function SaasHeroSection() {
         />
         <motion.div
           variants={tooltipVariants}
-          className="absolute top-4 -left-4 rounded-lg border border-blue-500/30 bg-black/80 p-2 backdrop-blur-md lg:top-1/4 lg:-left-20"
+          className="absolute top-4 -left-4 rounded-lg border border-purple-500/30 bg-black/80 p-2 backdrop-blur-md lg:top-1/4 lg:-left-20"
         >
           <div className="flex items-center gap-2">
-            <Zap className="h-4 w-4 text-blue-400" />
-            <span className="text-xs font-medium text-blue-200">
+            <Zap className="h-4 w-4 text-purple-400" />
+            <span className="text-xs font-medium text-purple-200">
               High Performance
             </span>
           </div>
@@ -232,11 +232,11 @@ export default function SaasHeroSection() {
 
         <motion.div
           variants={tooltipVariants}
-          className="absolute bottom-4 left-4 rounded-lg border border-blue-500/30 bg-black/80 p-2 backdrop-blur-md lg:bottom-1/4 lg:left-8"
+          className="absolute bottom-4 left-4 rounded-lg border border-indigo-500/30 bg-black/80 p-2 backdrop-blur-md lg:bottom-1/4 lg:left-8"
         >
           <div className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-blue-400" />
-            <span className="text-xs font-medium text-blue-200">
+            <Sparkles className="h-4 w-4 text-indigo-400" />
+            <span className="text-xs font-medium text-indigo-200">
               AI-Powered
             </span>
           </div>
@@ -254,9 +254,9 @@ export default function SaasHeroSection() {
           <div className="w-full lg:w-auto">
             <motion.div
               variants={itemVariants}
-              className="mb-4 inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-sm text-blue-300"
+              className="mb-4 inline-flex items-center rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-sm text-purple-300"
             >
-              <span className="mr-2 rounded-full bg-blue-500 px-2 py-0.5 text-xs font-semibold text-white">
+              <span className="mr-2 rounded-full bg-purple-500 px-2 py-0.5 text-xs font-semibold text-white">
                 New
               </span>
               Introducing Nexus Platform
@@ -264,10 +264,10 @@ export default function SaasHeroSection() {
 
             <motion.h1
               variants={itemVariants}
-              className="font-heading mb-6 bg-gradient-to-r from-white/70 via-white to-blue-500/100 bg-clip-text text-3xl leading-tight text-transparent sm:text-4xl md:text-2xl lg:text-6xl"
+              className="mb-6 bg-gradient-to-r from-white/70 via-white to-slate-500/80 bg-clip-text text-3xl leading-tight text-transparent sm:text-4xl md:text-5xl lg:text-6xl"
             >
               The Bridge Between <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-blue-600/20/20 via-blue-600/20 to-blue-600/20 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
                 AI and Web3
               </span>
             </motion.h1>
@@ -277,27 +277,23 @@ export default function SaasHeroSection() {
               variants={itemVariants}
               className="mb-6 flex flex-wrap justify-center gap-4 md:gap-6 lg:justify-start"
             >
-              <div className="rounded-lg border border-blue-500/20 bg-black/40 px-4 py-2 backdrop-blur-sm">
+              <div className="rounded-lg border border-purple-500/20 bg-black/40 px-4 py-2 backdrop-blur-sm">
                 <p className="text-2xl font-bold text-white">
                   {stats.users.toLocaleString()}+
                 </p>
-                <p className="font-heading text-xs text-gray-400">
-                  Active Users
-                </p>
+                <p className="text-xs text-gray-400">Active Users</p>
               </div>
               <div className="rounded-lg border border-blue-500/20 bg-black/40 px-4 py-2 backdrop-blur-sm">
                 <p className="text-2xl font-bold text-white">
                   {stats.transactions.toLocaleString()}+
                 </p>
-                <p className="font-heading text-xs text-gray-400">
-                  Transactions
-                </p>
+                <p className="text-xs text-gray-400">Transactions</p>
               </div>
-              <div className="rounded-lg border border-blue-500/20 bg-black/40 px-4 py-2 backdrop-blur-sm">
+              <div className="rounded-lg border border-indigo-500/20 bg-black/40 px-4 py-2 backdrop-blur-sm">
                 <p className="text-2xl font-bold text-white">
                   {stats.networks}+
                 </p>
-                <p className="font-heading text-xs text-gray-400">Networks</p>
+                <p className="text-xs text-gray-400">Networks</p>
               </div>
             </motion.div>
 
@@ -306,22 +302,22 @@ export default function SaasHeroSection() {
               variants={itemVariants}
               className="mb-8 flex flex-wrap items-center justify-center gap-2 lg:justify-start"
             >
-              <span className="font-heading text-xs font-medium text-gray-400">
+              <span className="text-xs font-medium text-gray-400">
                 Integrates with:
               </span>
-              <div className="flex cursor-pointer items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-2 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm transition-all hover:bg-blue-950">
+              <div className="flex cursor-pointer items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-2 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm transition-all hover:bg-purple-950">
                 <div className="h-2 w-2 rounded-full bg-blue-400"></div>
                 Ethereum
               </div>
-              <div className="flex cursor-pointer items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-2 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm transition-all hover:bg-blue-950">
-                <div className="h-2 w-2 rounded-full bg-blue-400"></div>
+              <div className="flex cursor-pointer items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-2 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm transition-all hover:bg-purple-950">
+                <div className="h-2 w-2 rounded-full bg-purple-400"></div>
                 Solana
               </div>
-              <div className="flex cursor-pointer items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-2 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm transition-all hover:bg-blue-950">
+              <div className="flex cursor-pointer items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-2 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm transition-all hover:bg-purple-950">
                 <div className="h-2 w-2 rounded-full bg-green-400"></div>
                 OpenAI
               </div>
-              <div className="flex cursor-pointer items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-2 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm transition-all hover:bg-blue-950">
+              <div className="flex cursor-pointer items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-2 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm transition-all hover:bg-purple-950">
                 <div className="h-2 w-2 rounded-full bg-yellow-400"></div>
                 +5 more
               </div>
@@ -342,8 +338,16 @@ export default function SaasHeroSection() {
               className="mb-8 flex flex-col flex-wrap gap-4 sm:flex-row lg:justify-end"
             >
               <Button
+                className="group rounded-full border-t border-purple-400 bg-gradient-to-b from-purple-700 to-slate-950/80 px-6 py-6 text-white shadow-lg shadow-purple-600/20 transition-all hover:shadow-purple-600/40"
+                size="lg"
+              >
+                Start Building
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Button>
+
+              <Button
                 variant="outline"
-                className="rounded-full border-blue-500/30 bg-transparent text-white hover:bg-blue-500/10 hover:text-white"
+                className="rounded-full border-purple-500/30 bg-transparent text-white hover:bg-purple-500/10 hover:text-white"
                 size="lg"
               >
                 View Demo
@@ -361,15 +365,15 @@ export default function SaasHeroSection() {
                     key={i}
                     className="h-6 w-6 overflow-hidden rounded-full border-2 border-slate-900 bg-slate-800"
                   >
-                    <div className="h-full w-full bg-gradient-to-br from-blue-500 to-blue-600/20 opacity-80"></div>
+                    <div className="h-full w-full bg-gradient-to-br from-purple-500 to-blue-600 opacity-80"></div>
                   </div>
                 ))}
               </div>
               <span className="text-xs text-slate-300">
-                <span className="font-semibold text-white">500+</span>{" "}
+                <span className="font-semibold text-white">500+</span>{' '}
                 developers already building
               </span>
-              <ArrowUpRight className="h-3 w-3 text-blue-400" />
+              <ArrowUpRight className="h-3 w-3 text-purple-400" />
             </motion.div>
           </div>
         </motion.div>

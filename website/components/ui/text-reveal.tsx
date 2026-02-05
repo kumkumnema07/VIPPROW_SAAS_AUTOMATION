@@ -26,7 +26,7 @@ export const TextReveal = ({
     split === 'word' ? children.split(' ') : children.split(/(?=.)/);
 
   return (
-    <div>
+    <div className='text-center'>
       {segments.map((c, index) => (
         <motion.span
           key={`${c}-${index}`}

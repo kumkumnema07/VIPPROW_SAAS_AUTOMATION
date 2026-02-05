@@ -9,7 +9,7 @@ export function LampSection() {
       {/* 🌞 Blue Gradient Sun */}
       <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2">
         <div className="h-[500px] w-[600px] rounded-full 
-          bg-gradient-to-b from-blue-500/60 via-blue-400/30 to-transparent
+          bg-gradient-to-b from-blue-600/80
           blur-3xl"
         />
       </div>
