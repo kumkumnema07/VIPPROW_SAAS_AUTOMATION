@@ -9,5 +9,6 @@ export default function SignupPage() {
   //   navigate("/sign-in", { replace: true });
   // }, [navigate]);
 
+  
   return <SignupForm />;
 }
