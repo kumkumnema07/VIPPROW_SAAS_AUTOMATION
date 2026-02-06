@@ -25,9 +25,6 @@ export default function AutomationPage() {
       </div>
       {/* Digital Marketing Feature End */}
 
-      
-
-
        {/* AutomationBentoGridSection Feature Start */}
       <div className="pt-20 max-w-7xl mx-auto">
         <PrimaryHeading
