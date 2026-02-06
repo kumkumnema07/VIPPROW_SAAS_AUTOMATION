@@ -1,5 +1,6 @@
 import ClientCTA from "@/components/client-sections/ClientCTA";
 import ClientTestimonialMarquee from "@/components/client-sections/ClientTestimonialMarquee";
+import AutomationBentoGridSection from "@/components/custom-ui/AutomationBentoGridSection";
 import AutomationHeroSection from "@/components/custom-ui/AutomationHeroSection";
 import InfoSection from "@/components/custom-ui/InfoSection";
 import DigitalMarketingFeatureSection from "@/components/mvpblock-ui/DigitalMarketingFeatureSection";
@@ -23,6 +24,19 @@ export default function AutomationPage() {
         <DigitalMarketingFeatureSection />
       </div>
       {/* Digital Marketing Feature End */}
+
+      
+
+
+       {/* AutomationBentoGridSection Feature Start */}
+      <div className="pt-20 max-w-7xl mx-auto">
+        <PrimaryHeading
+          heading="Empower Your Workflow with AI"
+          des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
+        />
+        <AutomationBentoGridSection />
+      </div>
+      {/* AutomationBentoGridSection Feature End */}
 
       {/* Testimonial Start */}
       <div className="pt-20 max-w-7xl mx-auto">
