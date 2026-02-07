@@ -14,9 +14,7 @@ export function BackgroundRippleEffect() {
 
         <CoverCase />
         <p className="relative z-10 mx-auto mt-6 max-w-xl text-center text-neutral-800 dark:text-neutral-500">
-          Hover over the boxes above and click.To be used on backgrounds of hero
-          sections OR Call to Action sections. I beg you don&apos;t use it
-          everywhere.
+          Driving measurable growth through performance marketing, SaaS automation, and smart digital strategies.
         </p>
       </div>
     </div>

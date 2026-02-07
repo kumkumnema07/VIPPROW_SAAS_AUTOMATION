@@ -3,6 +3,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
+::-webkit-scrollbar{
+  display:none;
+}
 @theme {
   --font-sans:
     "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",

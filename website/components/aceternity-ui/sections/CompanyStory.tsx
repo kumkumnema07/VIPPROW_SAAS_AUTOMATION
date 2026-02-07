@@ -9,8 +9,8 @@ export default function CompanyStory() {
       <SparklesHeading />
 
       <PrimaryHeading
-        heading="Empower Your Workflow with AI"
-        des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
+        heading="The Vision Behind Our Journey"
+        des="From insight to execution — driving growth with structure."
       />
     </section>
   );

@@ -50,68 +50,106 @@ export function RichTextEditor({
   placeholder?: string;
 }) {
   const editorContainerRef = useRef<HTMLDivElement>(null);
-
   const editor = useEditor({
-    extensions: [
-      StarterKit,
-      Bold,
-      Italic,
-      Underline,
-      BulletList,
-      OrderedList,
-      Blockquote,
-      CodeBlock,
-      Heading.configure({ levels: [1, 2, 3] }),
-      Link.configure({ openOnClick: true }),
-      Image.configure({
-        inline: false,
-        allowBase64: true,
-        HTMLAttributes: {
-          class: "rounded-md max-w-full my-3",
-        },
-      }),
-      Placeholder.configure({ placeholder }),
-    ],
-    content: value,
-    editorProps: {
-      handlePaste(view, event) {
-        const html = event.clipboardData?.getData("text/html");
-        const plain = event.clipboardData?.getData("text/plain");
-
-        if (html) {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(html, "text/html");
-          const imgs = doc.querySelectorAll("img");
-          imgs.forEach((img) => {
-            const src = img.getAttribute("src");
-            if (src && !src.startsWith("data:")) {
-              img.setAttribute("referrerpolicy", "no-referrer");
-            }
-          });
-          editor?.commands.insertContent(doc.body.innerHTML);
-          return true;
-        }
-
-        if (plain) {
-          editor?.commands.insertContent(plain);
-          return true;
-        }
-
-        return false;
+  extensions: [
+    StarterKit,
+    Bold,
+    Italic,
+    Underline,
+    BulletList,
+    OrderedList,
+    Blockquote,
+    CodeBlock,
+    Heading.configure({ levels: [1, 2, 3] }),
+    Link.configure({ openOnClick: true }),
+    Image.configure({
+      inline: false,
+      allowBase64: true,
+      HTMLAttributes: {
+        class: "rounded-md max-w-full my-3",
       },
-      attributes: {
-        class:
-          "min-h-[200px] focus:outline-none prose prose-sm sm:prose-base max-w-none dark:prose-invert relative",
-      },
+    }),
+    Placeholder.configure({ placeholder }),
+  ],
+  content: value,
+
+  immediatelyRender: false, // ✅ YAHI ADD KARNA HAI
+
+  editorProps: {
+    attributes: {
+      class:
+        "min-h-[200px] focus:outline-none prose prose-sm sm:prose-base max-w-none dark:prose-invert",
     },
-    onUpdate: ({ editor }) => onChange(editor.getHTML()),
-  });
+  },
+  onUpdate: ({ editor }) => onChange(editor.getHTML()),
+});
 
-  useEffect(() => {
-    if (editor && value !== editor.getHTML()) {
-      editor.commands.setContent(value || "");
-    }
-  }, [value, editor]);
+
+  // const editor = useEditor({
+  //   extensions: [
+  //     StarterKit,
+  //     Bold,
+  //     Italic,
+  //     Underline,
+  //     BulletList,
+  //     OrderedList,
+  //     Blockquote,
+  //     CodeBlock,
+  //     Heading.configure({ levels: [1, 2, 3] }),
+  //     Link.configure({ openOnClick: true }),
+  //     Image.configure({
+  //       inline: false,
+  //       allowBase64: true,
+  //       HTMLAttributes: {
+  //         class: "rounded-md max-w-full my-3",
+  //       },
+  //     }),
+  //     Placeholder.configure({ placeholder }),
+  //   ],
+  //   content: value,
+  //   editorProps: {
+  //     handlePaste(view, event) {
+  //       const html = event.clipboardData?.getData("text/html");
+  //       const plain = event.clipboardData?.getData("text/plain");
+
+  //       if (html) {
+  //         const parser = new DOMParser();
+  //         const doc = parser.parseFromString(html, "text/html");
+  //         const imgs = doc.querySelectorAll("img");
+  //         imgs.forEach((img) => {
+  //           const src = img.getAttribute("src");
+  //           if (src && !src.startsWith("data:")) {
+  //             img.setAttribute("referrerpolicy", "no-referrer");
+  //           }
+  //         });
+  //         editor?.commands.insertContent(doc.body.innerHTML);
+  //         return true;
+  //       }
+
+  //       if (plain) {
+  //         editor?.commands.insertContent(plain);
+  //         return true;
+  //       }
+
+  //       return false;
+  //     },
+  //     attributes: {
+  //       class:
+  //         "min-h-[200px] focus:outline-none prose prose-sm sm:prose-base max-w-none dark:prose-invert relative",
+  //     },
+  //   },
+  //   onUpdate: ({ editor }) => onChange(editor.getHTML()),
+  // });
+
+ useEffect(() => {
+  if (!editor) return;
+
+  const current = editor.getHTML();
+
+  if (value && current !== value) {
+    editor.commands.setContent(value, false);
+  }
+}, [value, editor]);
 
   // ✅ Upload image manually to Cloudinary
   const handleImageUpload = async () => {

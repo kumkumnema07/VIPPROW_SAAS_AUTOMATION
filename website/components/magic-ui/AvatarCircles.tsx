@@ -2,28 +2,28 @@ import { AvatarCircles } from "../ui/avatar-circles"
 
 const avatars = [
   {
-    imageUrl: "https://avatars.githubusercontent.com/u/16860528",
-    profileUrl: "https://github.com/dillionverma",
+    imageUrl: "assets/images/clients logo/allure.jpg",
+    profileUrl: "assets/images/clients logo/allure.jpg",
   },
   {
-    imageUrl: "https://avatars.githubusercontent.com/u/20110627",
-    profileUrl: "https://github.com/tomonarifeehan",
+    imageUrl: "assets/images/clients logo/aman-motors.jpg.jpeg",
+    profileUrl: "assets/images/clients logo/aman-motors.jpg.jpeg",
   },
   {
-    imageUrl: "https://avatars.githubusercontent.com/u/106103625",
-    profileUrl: "https://github.com/BankkRoll",
+    imageUrl: "assets/images/clients logo/belleza.jpg",
+    profileUrl: "assets/images/clients logo/belleza.jpg",
   },
   {
-    imageUrl: "https://avatars.githubusercontent.com/u/59228569",
-    profileUrl: "https://github.com/safethecode",
+    imageUrl: "assets/images/clients logo/Bunty Mart (1).png",
+    profileUrl: "assets/images/clients logo/Bunty Mart (1).png",
   },
   {
-    imageUrl: "https://avatars.githubusercontent.com/u/59442788",
-    profileUrl: "https://github.com/sanjay-mali",
+    imageUrl: "assets/images/clients logo/mango-tree.jpg",
+    profileUrl: "assets/images/clients logo/mango-tree.jpg",
   },
   {
-    imageUrl: "https://avatars.githubusercontent.com/u/89768406",
-    profileUrl: "https://github.com/itsarghyadas",
+    imageUrl: "assets/images/clients logo/odyssefy.jpg",
+    profileUrl: "assets/images/clients logo/odyssefy.jpg",
   },
 ]
 

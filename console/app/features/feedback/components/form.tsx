@@ -56,7 +56,7 @@ export default function FeedbackForm() {
   const thumbPreview = thumbFiles[0]?.preview || values.thumbnail || null;
 
   return (
-    <form className="space-y-4 overflow-hidden">
+    <form className="space-y-4 overflow-y-auto">
       <CardContent className="space-y-6">
         {/* Title */}
         <div>
@@ -78,7 +78,7 @@ export default function FeedbackForm() {
             options={categoryOptions}
             value={values.category}
             onChange={(v) => handleChange("category", v)}
-            width="100px"
+             width="100%"
           />
         </div>
 
@@ -86,6 +86,7 @@ export default function FeedbackForm() {
         <div>
           <Label className="mb-2">Short Description</Label>
           <Textarea
+          rows={3}
             value={values.short_description}
             onChange={(e) => handleChange("short_description", e.target.value)}
             className={`resize-none ${
@@ -164,8 +165,13 @@ export default function FeedbackForm() {
         </div>
 
         {/* FOOTER */}
-        <div className="pt-2 flex justify-center gap-2 w-full">
-          <Button type="button" variant="outline" onClick={() => navigate(-1)}>
+        <div className="pt-2 flex gap-2 w-full">
+          <Button
+            type="button"
+            variant="outline"
+            className="bg-gray-200 flex-1"
+            onClick={() => navigate(-1)}
+          >
             Close
           </Button>
           <Button type="submit" disabled={isSubmitting}>

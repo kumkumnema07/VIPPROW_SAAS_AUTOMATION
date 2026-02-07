@@ -16,29 +16,30 @@ export default function OurVisionSection() {
           </span>
 
           <h2 className="mt-4 text-4xl md:text-4xl font-semibold leading-tight font-heading">
-            Overflowing with meaningful experiences
+            Overflowing with Meaningful Growth
           </h2>
 
           <p className="mt-6 text-neutral-400 max-w-xl leading-relaxed font-heading text-sm">
-            We believe software should feel effortless yet powerful. Our vision
-            is to build products that scale with your ambition—helping teams
-            move faster, make smarter decisions, and stay focused on what
-            matters most.
+            We believe digital growth should feel seamless yet powerful. Our
+            vision is to create growth systems that scale with ambition—helping
+            teams move faster, make smarter decisions, and stay focused on what
+            truly matters.
           </p>
 
           {/* Vision bullets */}
           <div className="mt-12 space-y-8">
             <VisionItem
-              title="Clarity over complexity"
-              description="Design systems that reduce friction and help teams stay aligned, no matter the scale."
+              title="Simplicity over Guesswork"
+              description="We design clear, structured digital strategies and automation systems that remove confusion and inefficiency. By simplifying complex marketing and operational processes, we help businesses stay aligned, agile, and in control as they scale.."
             />
             <VisionItem
-              title="Decisions backed by data"
-              description="Transform real-time insights into confident actions using accessible analytics."
+              title="
+Decisions Powered by Data"
+              description="Every action we take is backed by data. From performance marketing to SEO and automation, we transform real-time insights into informed decisions that drive measurable results. Transparency and analytics ensure clarity at every stage of growth.."
             />
             <VisionItem
-              title="Built for long-term growth"
-              description="Create platforms that evolve with your users, your business, and the future."
+              title="Built for  Sustainable growth"
+              description="We create marketing strategies, automation workflows, and digital platforms that evolve with your business. Our solutions are designed for long-term scalability—supporting growth today while preparing you for the opportunities of tomorrow.."
             />
           </div>
         </div>

@@ -38,6 +38,8 @@ interface ComboboxProps {
 
   /** Custom width */
   width?: string;
+
+  className?: string;
 }
 
 /**
@@ -59,6 +61,7 @@ export function Combobox({
   placeholder = "Select option...",
   loading = false,
   width = "300px",
+  className,
 }: ComboboxProps) {
   const [open, setOpen] = React.useState(false);
   const selected = options.find((opt) => opt.value === value);
@@ -70,7 +73,8 @@ export function Combobox({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className={`justify-between w-[${width}]`}
+          className="justify-between w-full"
+          style={{ width }}
         >
           {selected ? selected.label : placeholder}
           <ChevronsUpDown className="opacity-50 h-4 w-4" />
@@ -102,7 +106,7 @@ export function Combobox({
                   <Check
                     className={cn(
                       "ml-auto",
-                      opt.value === value ? "opacity-100" : "opacity-0"
+                      opt.value === value ? "opacity-100" : "opacity-0",
                     )}
                   />
                 </CommandItem>

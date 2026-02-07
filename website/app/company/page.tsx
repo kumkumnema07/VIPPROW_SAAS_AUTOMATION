@@ -23,8 +23,8 @@ export default function CompanyPage() {
       {/* Mission Start */}
       <div className="pt-20 max-w-7xl mx-auto">
         <PrimaryHeading
-          heading="Empower Your Workflow with AI"
-          des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
+          heading=" Systematic Innovation for the Future."
+          des="Our approach focuses on building reliable frameworks that turn innovation into everyday execution, improving efficiency and long-term performance..."
         />
         <MissionSection />
       </div>
@@ -33,8 +33,8 @@ export default function CompanyPage() {
       {/* Vision Start */}
       <div className="pt-20 max-w-7xl mx-auto">
         <PrimaryHeading
-          heading="Empower Your Workflow with AI"
-          des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
+          heading="Growth Is Built, Not Boosted"
+          des="Vipprow creates structured, data-driven growth systems powered by performance marketing and automation."
         />
         <OurVisionSection />
       </div>

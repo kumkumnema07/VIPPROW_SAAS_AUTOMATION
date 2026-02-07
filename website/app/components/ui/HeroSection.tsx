@@ -33,7 +33,7 @@ export default function HeroSection() {
           sm:text-5xl md:text-6xl
         "
           >
-            The best platform to grow your business
+            The Best Platform to Grow your Business
           </h1>
 
           {/* Subtitle */}
