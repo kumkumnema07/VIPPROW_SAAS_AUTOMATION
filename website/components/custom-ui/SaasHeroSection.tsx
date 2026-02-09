@@ -201,11 +201,24 @@ export default function SaasHeroSection() {
       </div>
 
       <div className="fadein-blur relative z-0 mx-auto mb-10 h-[300px] w-[300px] lg:absolute lg:top-1/2 lg:right-1/2 lg:mx-0 lg:mb-0 lg:h-[500px] lg:w-[500px] lg:translate-x-1/2 lg:-translate-y-2/3">
-        <img
-          src="https://i.postimg.cc/fLptvwMg/nexus.webp"
-          alt="Nexus Platform 3D Visualization"
-          className="h-full w-full object-contain drop-shadow-[0_0_35px_#3358ea85] transition-all duration-1000 hover:scale-110"
-        />
+        <motion.div
+          className="w-full cursor-pointer"
+          animate={{
+            y: [0, -12, 0], // up → down → up
+          }}
+          transition={{
+            duration: 2.5,
+            ease: "easeInOut",
+            repeat: Infinity,
+          }}
+        >
+          <img
+            src="https://i.postimg.cc/fLptvwMg/nexus.webp"
+            alt="Nexus Platform 3D Visualization"
+            className="h-full w-full object-contain drop-shadow-[0_0_35px_#3358ea85] transition-all duration-1000 hover:scale-110"
+          />
+        </motion.div>
+
         <motion.div
           variants={tooltipVariants}
           className="absolute top-4 -left-4 rounded-lg border border-blue-500/30 bg-black/80 p-2 backdrop-blur-md lg:top-1/4 lg:-left-20"

@@ -15,10 +15,10 @@ import { useState } from "react";
 
 export function NavbarMenu() {
   const navItems = [
-    {
-      name: "Home",
-      link: "/",
-    },
+    // {
+    //   name: "Home",
+    //   link: "/",
+    // },
     {
       name: "Company",
       link: "/company",
@@ -26,6 +26,10 @@ export function NavbarMenu() {
     {
       name: "Services",
       link: "/services",
+    },
+    {
+      name: "Case Studies",
+      link: "/client-case-study",
     },
     {
       name: "Articles",

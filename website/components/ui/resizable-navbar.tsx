@@ -7,9 +7,39 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "motion/react";
+import Image from "next/image";
+import Link from "next/link";
 
 import React, { useRef, useState } from "react";
 
+type NavbarButtonCommon = {
+  children: React.ReactNode;
+  className?: string;
+  variant?: "primary" | "secondary" | "dark" | "gradient";
+  href?: string;
+  onClick?: () => void;
+};
+
+type AnchorButton = NavbarButtonCommon & {
+  href: string;
+  as?: "a";
+};
+
+type ButtonButton = NavbarButtonCommon & {
+  as: "button";
+  onClick?: () => void;
+};
+
+type LinkButton = NavbarButtonCommon & {
+  as: typeof Link;
+  href: string;
+};
+
+type NavbarButtonProps = AnchorButton | ButtonButton | LinkButton;
+
+type PolymorphicProps<T extends React.ElementType, Props = {}> = Props & {
+  as?: T;
+} & Omit<React.ComponentPropsWithoutRef<T>, keyof Props | "as">;
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -232,57 +262,60 @@ export const MobileNavToggle = ({
 
 export const NavbarLogo = () => {
   return (
-    <a
-      href="#"
+    <Link
+      href="/"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <img
+      <Image
         src="https://assets.aceternity.com/logo-dark.png"
         alt="logo"
         width={30}
         height={30}
       />
-      <span className="font-medium text-black dark:text-white font-heading">Vipprow</span>
-    </a>
+      <span className="font-medium text-black dark:text-white font-heading">
+        Vipprow
+      </span>
+    </Link>
   );
 };
 
-export const NavbarButton = ({
-  href,
-  as: Tag = "a",
-  children,
-  className,
-  variant = "primary",
-  ...props
-}: {
-  href?: string;
-  as?: React.ElementType;
-  children: React.ReactNode;
-  className?: string;
-  variant?: "primary" | "secondary" | "dark" | "gradient";
-} & (
-  | React.ComponentPropsWithoutRef<"a">
-  | React.ComponentPropsWithoutRef<"button">
-)) => {
+export const NavbarButton = (props: NavbarButtonProps) => {
+  const { as = "a", children, className, variant = "primary" } = props;
+
   const baseStyles =
-    "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
+    "px-4 py-2 rounded-md bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 
   const variantStyles = {
-    primary:
-      "shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
+    primary: "shadow-[0_0_24px_rgba(34,_42,_53,_0.06)]",
     secondary: "bg-transparent shadow-none dark:text-white",
-    dark: "bg-black text-white shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
-    gradient:
-      "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
+    dark: "bg-black text-white",
+    gradient: "bg-gradient-to-b from-blue-500 to-blue-700 text-white",
   };
 
+  const classes = cn(baseStyles, variantStyles[variant], className);
+
+  // 🔹 Link
+  if (as === Link) {
+    return (
+      <Link href={props.href!} className={classes}>
+        {children}
+      </Link>
+    );
+  }
+
+  // 🔹 Button
+  if (as === "button") {
+    return (
+      <button className={classes} onClick={props.onClick}>
+        {children}
+      </button>
+    );
+  }
+
+  // 🔹 Anchor (default)
   return (
-    <Tag
-      href={href || undefined}
-      className={cn(baseStyles, variantStyles[variant], className)}
-      {...props}
-    >
+    <a href={props.href} className={classes}>
       {children}
-    </Tag>
+    </a>
   );
 };

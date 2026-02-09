@@ -7,6 +7,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useTestimonials } from "@/app/features/testimonial/hook/useTestimonial";
+import Link from "next/link";
+import Image from "next/image";
 
 const reviews = [
   {
@@ -69,35 +71,38 @@ export default function TestimonialMarquee() {
           {testimonials.length &&
             testimonials.map((testimonial, idx) => (
               <SwiperSlide key={idx}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mx-2 md:mx-20">
-                  {/* LEFT CONTENT */}
-                  <div className="text-white font-heading">
-                    <p
-                      className="text-lg leading-relaxed text-gray-300 [&_span]:text-white [&_span]:font-semibold mb-10"
-                      dangerouslySetInnerHTML={{
-                        __html: testimonial.description || "",
-                      }}
-                    />
-
-                    <h3 className="text-md font-normal mb-2 italic">
-                      {testimonial.name}
-                    </h3>
-                    <p className="text-sm text-gray-200 italic">
-                      {testimonial.designation}
-                    </p>
-                  </div>
-
-                  {/* RIGHT IMAGE */}
-                  <div className="flex justify-center md:justify-end">
-                    <div className="relative w-[300px] h-[300px] rounded-full overflow-hidden">
-                      <img
-                        src={testimonial.avatar ?? ""}
-                        alt={testimonial.name}
-                        className="w-full h-full object-cover"
+                <Link href={"/client-case-study"}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mx-2 md:mx-20">
+                    {/* LEFT CONTENT */}
+                    <div className="text-white font-heading">
+                      <p
+                        className="text-lg leading-relaxed text-gray-300 [&_span]:text-white [&_span]:font-semibold mb-10"
+                        dangerouslySetInnerHTML={{
+                          __html: testimonial.description || "",
+                        }}
                       />
+
+                      <h3 className="text-md font-normal mb-2 italic">
+                        {testimonial.name}
+                      </h3>
+                      <p className="text-sm text-gray-200 italic">
+                        {testimonial.designation}
+                      </p>
+                    </div>
+
+                    {/* RIGHT IMAGE */}
+                    <div className="flex justify-center md:justify-end">
+                      <div className="relative w-[300px] h-[300px] rounded-full overflow-hidden">
+                        <Image
+                          fill
+                          src={testimonial.avatar ?? ""}
+                          alt={testimonial.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               </SwiperSlide>
             ))}
         </Swiper>
