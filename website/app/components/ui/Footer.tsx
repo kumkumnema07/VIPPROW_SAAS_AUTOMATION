@@ -143,8 +143,8 @@ export default function Footer() {
                 Get the latest updates, tutorials, and exclusive offers.
               </p>
             </form>
-            <h1 className="font-heading from-muted-foreground/15 bg-gradient-to-b bg-clip-text text-5xl font-extrabold text-transparent lg:text-7xl">
-              Vipprow line
+            <h1 className="font-heading from-muted-foreground/15 bg-gradient-to-b bg-clip-text text-5xl font-extrabold text-transparent lg:text-6xl">
+              Grow with us.
             </h1>
           </div>
 
