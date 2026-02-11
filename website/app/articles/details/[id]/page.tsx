@@ -51,9 +51,29 @@ export default function DetailPage() {
       transition={{ duration: 0.4, ease: "easeOut" }}
       className="pt-36 max-w-5xl mx-auto px-6"
     >
+      <h1
+        className="
+          max-w-5xl font-heading
+          text-xl font-medium leading-normal
+          text-zinc-900 dark:text-white md:text-2xl
+          "
+      >
+        {item.title}
+        {new Date(item.createdAt!).toDateString()}
+      </h1>
+
+      {/* Header */}
+      <div className="mt-2">
+        {typeof item.category === "object" && item.category !== null && (
+          <span className="inline-block rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-400">
+            {item.category.name}
+          </span>
+        )}
+      </div>
+
       {/* Thumbnail */}
       {item.thumbnail && (
-        <div className="mb-10 overflow-hidden rounded-2xl border border-white/10">
+        <div className="my-10 overflow-hidden rounded-2xl border border-white/10">
           <Image
             src={item.thumbnail}
             alt={item.title}
@@ -64,42 +84,29 @@ export default function DetailPage() {
         </div>
       )}
 
-      {/* Header */}
-      <div className="mb-10">
-        {typeof item.category === "object" && item.category !== null && (
-          <span className="mb-3 inline-block rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-400">
-            {item.category.name}
-          </span>
-        )}
-
-        <PrimaryHeading
-          heading={item.title}
-          des={new Date(item.createdAt!).toDateString()}
-        />
-      </div>
-
       {/* Content Card */}
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-10">
+      <div>
         <div
           className="
             space-y-6
             text-sm leading-7 text-white/80
 
-            [&_h1]:text-xl
-            [&_h1]:font-semibold
+            [&_h1]:text-lg
+            [&_h1]:font-normale
             [&_h1]:text-white
 
             [&_h2]:text-lg
-            [&_h2]:font-semibold
+            [&_h2]:font-normale
             [&_h2]:pt-6
             [&_h2]:text-white
 
             [&_h3]:text-base
-            [&_h3]:font-semibold
+            [&_h3]:font-normale
             [&_h3]:pt-4
             [&_h3]:text-white
 
             [&_p]:text-white/80
+            [&_p]:text-justify
 
             [&_ul]:list-disc
             [&_ul]:pl-6
