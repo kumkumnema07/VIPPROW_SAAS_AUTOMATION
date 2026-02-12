@@ -45,6 +45,8 @@ export function ContactForm({
 
   const { data, isLoading, error } = usePublicServicesNames();
   const services_names = data?.data ?? [];
+  const [selectedServices, setSelectedServices] = useState<Service[]>([]);
+
   const anchor = useComboboxAnchor();
 
   const [form, setForm] = useState({
@@ -68,10 +70,24 @@ export function ContactForm({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    submitMutation.mutate(form, {
+    // Optional validation (recommended)
+    if (selectedServices.length === 0) {
+      toast.error("Please select at least one service.");
+      return;
+    }
+
+    // Prepare final payload
+    const payload = {
+      ...form,
+      services: selectedServices.map((service) => service._id), // send only ids
+    };
+
+    submitMutation.mutate(payload, {
       onSuccess: () => {
         console.log("Form submitted successfully.");
         toast.success("Form submitted successfully.");
+
+        // Reset form fields
         setForm({
           type: "General",
           name: "",
@@ -80,14 +96,18 @@ export function ContactForm({
           message: "",
           subject: "",
         });
+
+        // Reset selected services
+        setSelectedServices([]); // this will now clear dropdown
       },
+
       onError: (err: unknown) => {
         const errorMessage =
           (err as { response?: { data?: { message?: string } } })?.response
             ?.data?.message || "Something went wrong. Try again";
 
         toast.error(errorMessage);
-        console.log(errorMessage);
+        console.log("Submission error:", errorMessage);
       },
     });
   };
@@ -113,7 +133,7 @@ export function ContactForm({
                 <Input
                   id="name"
                   type="text"
-                  placeholder="full name"
+                  placeholder="Full Name"
                   name="name"
                   value={form.name}
                   onChange={handleChange}
@@ -122,9 +142,9 @@ export function ContactForm({
               </Field>
 
               <Field>
-                <FieldLabel htmlFor="fullname">Phone</FieldLabel>
+                <FieldLabel htmlFor="phone">Phone</FieldLabel>
                 <Input
-                  id="fullname"
+                  id="phone"
                   type="text"
                   placeholder="1234567890"
                   min={10}
@@ -154,9 +174,14 @@ export function ContactForm({
                 <FieldLabel htmlFor="message">Select Sevices</FieldLabel>
 
                 <Combobox<Service, true>
+                  key={selectedServices.length} // 👈 forces re-render when cleared
                   multiple
                   autoHighlight
                   items={services_names}
+                  value={selectedServices}
+                  onValueChange={(values) =>
+                    setSelectedServices(values as Service[])
+                  }
                 >
                   <div className="relative">
                     <ComboboxChips ref={anchor} className="w-full pr-10">

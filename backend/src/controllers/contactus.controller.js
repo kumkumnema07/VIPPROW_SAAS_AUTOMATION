@@ -1,11 +1,13 @@
 import ContactUs from "../models/contactus.model.js";
+import mongoose from "mongoose";
 
 /* ============================================================
    📌 CREATE ContactUs (Public)
 ============================================================ */
 export const createContactUs = async (req, res) => {
   try {
-    const { type, name, email, phone, subject, message, meta } = req.body;
+    const { type, name, email, phone, subject, message, meta, services } =
+      req.body;
 
     // Validate required fields
     if (!type) {
@@ -21,6 +23,19 @@ export const createContactUs = async (req, res) => {
         message: "Name & Phone are required.",
       });
     }
+    
+    if (services && Array.isArray(services)) {
+      const isInvalid = services.some(
+        (id) => !mongoose.Types.ObjectId.isValid(id),
+      );
+
+      if (isInvalid) {
+        return res.status(400).json({
+          status: "error",
+          message: "Invalid Service ID detected.",
+        });
+      }
+    }
 
     // ---------------------------------------------
     // 🌟 CREATE DOCUMENT
@@ -33,6 +48,7 @@ export const createContactUs = async (req, res) => {
       subject: subject || null,
       message,
       meta: meta || {},
+      services: services || null, // 👈 ADD THIS
       ipAddress: req.ip,
       userAgent: req.headers["user-agent"],
       createdBy: req.user?._id || null,

@@ -11,14 +11,9 @@ const contactUsSchema = new Schema(
     type: {
       type: String,
       required: true,
-      enum: [
-        "General",
-        "Career",
-        "Services",
-        "other",
-      ],
+      enum: ["General", "Career", "Services", "other"],
       index: true,
-      default: "General"
+      default: "General",
     },
 
     // 👤 User Details
@@ -45,6 +40,13 @@ const contactUsSchema = new Schema(
       default: null,
       match: [/^[0-9]{10,15}$/, "Invalid phone number format"],
     },
+
+    services: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Service",
+      },
+    ],
 
     subject: {
       type: String,
@@ -102,7 +104,7 @@ const contactUsSchema = new Schema(
     timestamps: true,
     versionKey: false,
     collection: "contact_us",
-  }
+  },
 );
 
 // ===============================================
