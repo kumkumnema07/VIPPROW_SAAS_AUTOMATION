@@ -25,6 +25,7 @@ import {
   useGetServiceByIdQuery,
 } from "../data/serviceApi";
 import { RichTextEditor } from "~/components/crud/RichTextEditor";
+import { useGetDomainsQuery } from "~/features/domains/data/domainsApi";
 
 // Validation helper
 const validate = (values: any) => {
@@ -35,6 +36,8 @@ const validate = (values: any) => {
     errors.title = "Title must be at least 3 characters.";
   else if (values.title.length > 100)
     errors.title = "Title cannot exceed 100 characters.";
+
+  if (!values.domain) errors.domain = "Domain is required.";
 
   if (values.subHeading && values.subHeading.length > 300)
     errors.subHeading = "Subheading cannot exceed 300 characters.";
@@ -58,6 +61,9 @@ export default function ServiceForm({
   const { id } = useParams<{ id: string }>();
   const isEdit = mode === "edit" || !!id;
 
+  const { data: domainData } = useGetDomainsQuery({ page: 2, limit: 50 });
+  const domains = domainData?.data || [];
+
   // ✅ API Hooks
   const { data: serviceData, isLoading: loadingService } =
     useGetServiceByIdQuery(id ?? "", { skip: !isEdit });
@@ -67,6 +73,7 @@ export default function ServiceForm({
   // ✅ Local State
   const [values, setValues] = useState({
     title: "",
+    domain: "",
     subHeading: "",
     description: "",
     thumbnail: null as string | null,
@@ -82,6 +89,7 @@ export default function ServiceForm({
       const s = serviceData.data;
       setValues({
         title: s.title || "",
+        domain: s.domain?._id || s.domain || "",
         subHeading: s.subHeading || "",
         description: s.description || "",
         thumbnail: s.thumbnail || null,
@@ -119,6 +127,7 @@ export default function ServiceForm({
     try {
       const formData = new FormData();
       formData.append("title", values.title.trim());
+      formData.append("domain", values.domain);
       formData.append("subHeading", values.subHeading.trim());
       formData.append("description", values.description.trim());
       formData.append("isActive", String(values.isActive));
@@ -142,6 +151,7 @@ export default function ServiceForm({
           setValues({
             title: "",
             subHeading: "",
+            domain: "",
             description: "",
             thumbnail: null,
             isActive: true,
@@ -207,6 +217,28 @@ export default function ServiceForm({
                   />
                   {errors.title && (
                     <p className="text-xs text-red-500 mt-1">{errors.title}</p>
+                  )}
+                </div>
+
+                {/* Domain */}
+                <div>
+                  <Label className="mb-2">Domain</Label>
+                  <select
+                    value={values.domain}
+                    onChange={(e) => handleChange("domain", e.target.value)}
+                    className={`w-full border rounded-md px-3 py-2 bg-background ${
+                      errors.domain ? "border-red-500" : ""
+                    }`}
+                  >
+                    <option value="">Select Domain</option>
+                    {domains.map((d: any) => (
+                      <option key={d._id} value={d._id}>
+                        {d.name}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.domain && (
+                    <p className="text-xs text-red-500 mt-1">{errors.domain}</p>
                   )}
                 </div>
 

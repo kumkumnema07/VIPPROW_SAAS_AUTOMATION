@@ -6,6 +6,7 @@ interface ServiceState {
   sortOrder: string;
   search: string;
   selectedService: any | null;
+  domain: string; // 👈 ADD THIS
 }
 
 const initialState: ServiceState = {
@@ -13,6 +14,7 @@ const initialState: ServiceState = {
   sortOrder: "desc",
   search: "",
   selectedService: null,
+  domain: "", // 👈 ADD
 };
 
 const serviceSlice = createSlice({
@@ -20,7 +22,10 @@ const serviceSlice = createSlice({
   initialState,
   reducers: {
     // ✅ Set sorting field and order
-    setSort(state, action: PayloadAction<{ sortBy: string; sortOrder: string }>) {
+    setSort(
+      state,
+      action: PayloadAction<{ sortBy: string; sortOrder: string }>,
+    ) {
       const { sortBy, sortOrder } = action.payload;
       state.sortBy = sortBy;
       state.sortOrder = sortOrder;
@@ -36,17 +41,28 @@ const serviceSlice = createSlice({
       state.selectedService = action.payload;
     },
 
+    // Set Domain
+    setDomain(state, action: PayloadAction<string>) {
+      state.domain = action.payload;
+    },
+
     // ✅ Clear all filters (useful for resets)
     resetFilters(state) {
       state.sortBy = "createdAt";
       state.sortOrder = "desc";
       state.search = "";
       state.selectedService = null;
+      state.domain = ""; // reset domain
     },
   },
 });
 
-export const { setSort, setSearch, setSelectedService, resetFilters } =
-  serviceSlice.actions;
+export const {
+  setSort,
+  setSearch,
+  setSelectedService,
+  setDomain,
+  resetFilters,
+} = serviceSlice.actions;
 
 export default serviceSlice.reducer;
