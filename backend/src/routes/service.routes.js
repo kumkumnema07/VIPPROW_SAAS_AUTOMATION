@@ -9,6 +9,7 @@ import {
   destroyServiceById,
   getAllActiveServices,
   getAllServices,
+  getAllActiveServicesName,
 } from "../controllers/service.controller.js";
 
 const router = Router();
@@ -17,6 +18,7 @@ const router = Router();
    🟢 Public Routes (No Auth Required)
    ================================ */
 router.get("/public", getAllActiveServices);
+router.get("/public/names", getAllActiveServicesName);
 router.get("/public/:id", getServiceById);
 
 /* ================================

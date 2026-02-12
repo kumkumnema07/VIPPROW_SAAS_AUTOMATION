@@ -116,6 +116,7 @@ export const getAllActiveServices = async (req, res) => {
 /**
  * 🟢 Get Service by ID
  */
+
 export const getServiceById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -135,6 +136,27 @@ export const getServiceById = async (req, res) => {
   }
 };
 
+// Get All Active Services Names
+
+export const getAllActiveServicesName = async (req, res) => {
+  try {
+    const services_names = await Service.find({isActive:true}).select("title").lean();
+
+    if (services_names.length === 0) {
+      return res.status(404).json({ message: "Services not found." });
+    }
+
+    res.status(200).json({
+      message: "Services Names fetched successfully.",
+      data: services_names,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message ?? "Internal Error",
+      error: error.message,
+    });
+  }
+};
 
 /* ============================
    🔒 ADMIN — GET ALL Services (with filters)
@@ -195,7 +217,10 @@ export const getAllServices = async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ success: false, message: err.message ?? "Internal Server Error" });
+    res.status(500).json({
+      success: false,
+      message: err.message ?? "Internal Server Error",
+    });
   }
 };
 
