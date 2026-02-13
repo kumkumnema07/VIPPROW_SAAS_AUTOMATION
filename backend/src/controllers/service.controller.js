@@ -4,6 +4,7 @@ import {
   destroyFromCloudinary,
   uploadToCloudinary,
 } from "../utils/cloudinaryService.js";
+import mongoose from "mongoose";
 
 /* ============================
    🟢 PUBLIC CONTROLLERS
