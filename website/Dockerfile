@@ -7,7 +7,8 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# 2️⃣ Build the app
+
+# 2️⃣ Build
 FROM node:20-alpine AS builder
 WORKDIR /app
 
@@ -15,7 +16,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
 
-# 3️⃣ Production image
+
+# 3️⃣ Production
 FROM node:20-alpine AS runner
 WORKDIR /app
 
@@ -25,4 +27,4 @@ COPY --from=builder /app ./
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["sh", "-c", "npm run start"]
