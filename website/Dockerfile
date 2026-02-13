@@ -1,30 +1,24 @@
 # website\Dockerfile
 
-# 1️⃣ Install dependencies
+# ---------- deps
 FROM node:20-alpine AS deps
 WORKDIR /app
-
 COPY package.json package-lock.json ./
 RUN npm ci
 
-
-# 2️⃣ Build
-FROM node:20-alpine AS builder
+# ---------- build
+FROM node:20-alpine AS build
 WORKDIR /app
-
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+COPY --from=deps /app/node_modules ./node_modules
 RUN npm run build
 
-
-# 3️⃣ Production
+# ---------- runtime
 FROM node:20-alpine AS runner
 WORKDIR /app
-
 ENV NODE_ENV=production
 
-COPY --from=builder /app ./
+COPY --from=build /app ./
 
 EXPOSE 3000
-
-CMD ["sh", "-c", "npm run start"]
+CMD ["npm", "start"]
