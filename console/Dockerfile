@@ -1,4 +1,4 @@
-# belleza_beauty_school_admin_console/Docker
+# console\Dockerfile
 
 # -------------------------------
 # Development dependencies

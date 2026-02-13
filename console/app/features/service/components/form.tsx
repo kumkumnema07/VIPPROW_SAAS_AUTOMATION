@@ -15,6 +15,18 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
+
+
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@/components/ui/combobox"
+
+
 import { ImageIcon, UploadIcon, XIcon, Loader2 } from "lucide-react";
 import { useFileUpload } from "@/hooks/use-file-upload";
 import { toast } from "sonner";
@@ -23,9 +35,11 @@ import {
   useCreateServiceMutation,
   useUpdateServiceMutation,
   useGetServiceByIdQuery,
+  useGetPublicServiceNamesQuery,
 } from "../data/serviceApi";
 import { RichTextEditor } from "~/components/crud/RichTextEditor";
 import { useGetDomainsQuery } from "~/features/domains/data/domainsApi";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select";
 
 // Validation helper
 const validate = (values: any) => {
@@ -63,6 +77,9 @@ export default function ServiceForm({
 
   const { data: domainData } = useGetDomainsQuery({ page: 2, limit: 50 });
   const domains = domainData?.data || [];
+
+  const { data, isLoading } = useGetPublicServiceNamesQuery();
+  const services = data?.data ?? [];
 
   // ✅ API Hooks
   const { data: serviceData, isLoading: loadingService } =
@@ -223,20 +240,22 @@ export default function ServiceForm({
                 {/* Domain */}
                 <div>
                   <Label className="mb-2">Domain</Label>
-                  <select
-                    value={values.domain}
-                    onChange={(e) => handleChange("domain", e.target.value)}
-                    className={`w-full border rounded-md px-3 py-2 bg-background ${
-                      errors.domain ? "border-red-500" : ""
-                    }`}
+                  <Select
+                    value={values.serviceId}
+                    onValueChange={(value) => handleChange("serviceId", value)}
                   >
-                    <option value="">Select Domain</option>
-                    {domains.map((d: any) => (
-                      <option key={d._id} value={d._id}>
-                        {d.name}
-                      </option>
-                    ))}
-                  </select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select Service" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {services.map((service) => (
+                        <SelectItem key={service._id} value={service._id}>
+                          {service.title}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+
                   {errors.domain && (
                     <p className="text-xs text-red-500 mt-1">{errors.domain}</p>
                   )}

@@ -1,0 +1,89 @@
+# docker-compose.yml
+
+version: "3.9"
+
+services:
+  mongodb:
+    container_name: vipprow-mongodb
+    image: mongo:7
+    restart: unless-stopped
+    command: >
+      mongod
+      --wiredTigerCacheSizeGB 0.5
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - vipprow-network
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+
+  backend:
+    container_name: vipprow-backend
+    build:
+      context: ./backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    environment:
+      NODE_ENV: production
+      NODE_OPTIONS: --max-old-space-size=768
+      MONGO_URI: mongodb://mongodb:27017/vipprow
+    depends_on:
+      - mongodb
+    ports:
+      - "5000:5000"
+    networks:
+      - vipprow-network
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+
+  console:
+    container_name: vipprow-console
+    build:
+      context: ./console
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      NODE_OPTIONS: --max-old-space-size=768
+      VITE_API_URL: http://backend:5000
+    depends_on:
+      - backend
+    ports:
+      - "5173:3000"
+    networks:
+      - vipprow-network
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+
+  website:
+    container_name: vipprow-website
+    build:
+      context: ./website
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      NODE_OPTIONS: --max-old-space-size=768
+      NEXT_PUBLIC_API_URL: http://backend:5000
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+    networks:
+      - vipprow-network
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+
+networks:
+  vipprow-network:
+    driver: bridge
+
+volumes:
+  mongo-data:

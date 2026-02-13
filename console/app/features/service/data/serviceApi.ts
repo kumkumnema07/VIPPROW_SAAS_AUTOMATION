@@ -27,6 +27,15 @@ export const serviceApi = createApi({
       providesTags: ["Service"],
     }),
 
+    // ✅ Get all active service names (Public)
+    getPublicServiceNames: builder.query<
+      { message: string; data: { _id: string; title: string }[] },
+      void
+    >({
+      query: () => `service/public/names`,
+      providesTags: ["Service"],
+    }),
+
     // ✅ Get single public service by ID
     getPublicServiceById: builder.query({
       query: (id: string) => `service/public/${id}`,
@@ -101,6 +110,7 @@ export const serviceApi = createApi({
 export const {
   useGetPublicServicesQuery,
   useGetPublicServiceByIdQuery,
+  useGetPublicServiceNamesQuery,
   useGetServicesQuery,
   useGetServiceByIdQuery,
   useCreateServiceMutation,

@@ -1,4 +1,4 @@
-# belleza_beauty_school_backend/Dockerfile
+# backend\Dockerfile
 
 FROM node:20-alpine
 
