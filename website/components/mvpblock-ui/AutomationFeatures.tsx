@@ -5,14 +5,16 @@ import {
   Trophy,
   User,
   User2,
+  LucideIcon,
 } from 'lucide-react';
-import FeaturesPointerSection, { FeatureItem } from '../custom-ui/FeaturesPointersSection';
+import { cn } from '@/lib/utils';
+import FeaturesPointerSection, { FeatureCard, FeatureItem } from '../custom-ui/FeaturesPointersSection';
 
 // Create feature data arrays for left and right columns
 const leftFeatures: FeatureItem[] = [
   {
     icon: Building2,
-    title: 'Performance Focused',
+    title: '111 Performance Focused',
     description:
       ' Campaigns designed to generate leads, conversions, and measurable ROI. .',
     position: 'left',
@@ -64,11 +66,11 @@ const rightFeatures: FeatureItem[] = [
 ];
 
 
-export default function DigitalMarketingFeatureSection() {
+export default function AutomationFeatures() {
   return (
     <>
 
-    <FeaturesPointerSection heading='Digital Marketing' description='Desc' leftFeatures={leftFeatures} rightFeatures={rightFeatures} />
+    <FeaturesPointerSection heading='Automation' description='Desc' leftFeatures={leftFeatures} rightFeatures={rightFeatures} />
     
     </>
   );

@@ -23,12 +23,11 @@ export default function ContactSection() {
           </span>
 
           <h2 className="mt-4 text-4xl font-semibold tracking-tight text-neutral-900 dark:text-white font-heading">
-            Let’s talk about your next idea
+            Let’s talk about your next move
           </h2>
 
           <p className="mt-4 max-w-xl text-sm text-neutral-600 dark:text-neutral-400 font-heading">
-            Whether you’re building an AI product, scaling a SaaS, or just have
-            a question—reach out. We usually reply within 24 hours.
+           Whether you’re scaling a SaaS, automating workflows, or exploring ideas, we’re ready to help. We usually reply within 24 hours
           </p>
 
           {/* INFO */}

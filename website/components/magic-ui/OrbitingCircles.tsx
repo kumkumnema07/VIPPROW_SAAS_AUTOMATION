@@ -6,7 +6,7 @@ export function OrbitingCirclesDemo({ className }: { className?: string }) {
     <div
       className={cn(
         "pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden scale-100",
-        className
+        className,
       )}
     >
       {/* 🔵 CENTER ICON */}
@@ -24,25 +24,30 @@ export function OrbitingCirclesDemo({ className }: { className?: string }) {
       {/* 🟢 OUTER ORBIT (LARGEST) */}
       <OrbitingCircles iconSize={42} radius={180} speed={1}>
         <Icons.whatsapp />
-        <Icons.notion />
+        <Icons.pinterest />
         <Icons.googleDrive />
         <Icons.gitHub />
-        <Icons.whatsapp />
+        
+        
       </OrbitingCircles>
 
       {/* 🟡 MIDDLE ORBIT */}
       <OrbitingCircles iconSize={34} radius={120} reverse speed={1}>
-        <Icons.openai />
+       
         <Icons.notion />
-        <Icons.googleDrive />
-        <Icons.gitHub />
+        <Icons.linkedin />
+        <Icons.instagram />
+        
+        
+        <Icons.youtube />
       </OrbitingCircles>
 
       {/* 🔵 INNER ORBIT (SMALLEST) */}
       <OrbitingCircles iconSize={26} radius={70} speed={1}>
-        <Icons.openai />
+         <Icons.xTwitter />
         <Icons.whatsapp />
-        <Icons.notion />
+        
+         {/* <Icons.facebookNew /> */}
       </OrbitingCircles>
     </div>
   );
@@ -175,4 +180,73 @@ const Icons = {
       />
     </svg>
   ),
+  linkedin: () => (
+    <svg width="100" height="100" viewBox="0 0 448 512" fill="currentColor">
+      <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 01107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
+    </svg>
+  ),
+
+  instagram: () => (
+    <svg width="100" height="100" viewBox="0 0 448 512" fill="currentColor">
+      <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.6-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zM398.8 80c-1.7-35.3-9.9-66.6-36.2-92.9C336.3-39.2 305-47.4 269.7-49.1 232.1-51.1 215.9-51.1 178.3-49.1c-35.3 1.7-66.6 9.9-92.9 36.2C59.1- -39.2 50.9-7.9 49.2 27.4 47.2 65 47.2 81.2 49.2 118.8c1.7 35.3 9.9 66.6 36.2 92.9 26.3 26.3 57.6 34.5 92.9 36.2 37.6 2 53.8 2 91.4 0 35.3-1.7 66.6-9.9 92.9-36.2 26.3-26.3 34.5-57.6 36.2-92.9 2-37.6 2-53.8 0-91.4z" />
+    </svg>
+  ),
+
+  pinterest: () => (
+    <svg width="100" height="100" viewBox="0 0 384 512" fill="currentColor">
+      <path d="M204 6.5C101.4 6.5 0 108 0 210.4c0 79.6 41.2 148.2 103.9 174.2-.5-14.8-.1-32.6 3.6-48.6 4-17.2 26.6-112.7 26.6-112.7s-6.6-13.3-6.6-32.9c0-30.8 17.9-53.8 40.1-53.8 18.9 0 28 14.2 28 31.2 0 19-12.1 47.4-18.3 73.7-5.2 22 11 39.9 32.6 39.9 39.2 0 65.6-50.3 65.6-109.8 0-45.3-30.5-79.2-86-79.2-62.8 0-101.9 46.8-101.9 99.1 0 18.1 5.4 30.9 13.8 40.8 3.9 4.6 4.5 6.4 3.1 11.6-1 3.8-3.4 13.6-4.4 17.4-1.4 5.3-5.8 7.2-10.7 5.2-29.9-12.2-43.8-45-43.8-82 0-61.1 50.4-134.4 153.8-134.4 82.2 0 136.4 59.6 136.4 123.6 0 84.6-47.1 147.8-116.6 147.8-23.4 0-45.4-12.7-53-27.1l-14.4 55.1c-5.2 19.7-15.3 39.4-23.4 52.8 17.6 5.4 36.2 8.3 55.6 8.3 102.6 0 204-101.5 204-203.9C408 108 306.6 6.5 204 6.5z" />
+    </svg>
+  ),
+
+  youtube: () => (
+  <svg
+    width="100"
+    height="100"
+    viewBox="0 0 576 512"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill="#FF0000"
+      d="M549.655 124.083c-6.281-23.65-24.787-42.157-48.438-48.438C458.778 64 288 64 288 64S117.222 64 74.783 75.645c-23.65 6.281-42.157 24.787-48.438 48.438C16 166.522 16 256 16 256s0 89.478 10.345 131.917c6.281 23.65 24.787 42.157 48.438 48.438C117.222 448 288 448 288 448s170.778 0 213.217-11.645c23.65-6.281 42.157-24.787 48.438-48.438C560 345.478 560 256 560 256s0-89.478-10.345-131.917z"
+    />
+    <path
+      fill="#FFFFFF"
+      d="M232 336l142-80-142-80v160z"
+    />
+  </svg>
+),
+// facebookNew: () => (
+//   <svg
+//     width="100"
+//     height="100"
+//     viewBox="0 0 24 24"
+//     xmlns="http://www.w3.org/2000/svg"
+//   >
+//     <!-- Blue Circle -->
+//     <circle cx="12" cy="12" r="12" fill="#1877F2" />
+
+//     <!-- White "f" -->
+//     <path
+//       fill="#FFFFFF"
+//       d="M15.117 8.667h-1.9c-.298 0-.617.39-.617.915v1.37h2.517l-.38 2.32h-2.137V20h-2.626v-6.728H8.5v-2.32h1.474V9.795c0-1.46 1.005-2.795 2.657-2.795h2.486v1.667z"
+//     />
+//   </svg>
+// ),
+
+xTwitter: () => (
+  <svg
+    width="100"
+    height="100"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    className="fill-black dark:fill-white"
+  >
+    <path d="M18.244 2H21l-6.43 7.36L22 22h-6.8l-5.324-7.03L3.88 22H1l6.873-7.863L2 2h6.97l4.81 6.352L18.244 2zm-1.19 18h1.885L7.08 4H5.078l11.976 16z" />
+  </svg>
+),
+
+
+
+
+
 };

@@ -11,13 +11,13 @@ export default function DigitalMarketingHeroSection() {
             <div className="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
               <div>
                 <p className="text-sm font-semibold tracking-wider text-gray-200 uppercase">
-                  A social media for learners
+                 PERFORMANCE-DRIVEN DIGITAL MARKETING
                 </p>
                 <h1 className="mt-4 text-4xl font-bold text-white lg:mt-8 sm:text-5xl xl:text-7xl font-heading">
-                  Connect & learn from the experts
+                  Grow Your Business with Smart Digital Marketing
                 </h1>
                 <p className="mt-4 text-sm text-white lg:mt-8 sm:text-md">
-                  Grow your career fast with right mentor.
+                 Build, Scale, and Convert with Intelligent Digital Marketing.
                 </p>
 
                 <div className="mt-10 flex flex-row gap-4">
@@ -38,7 +38,7 @@ export default function DigitalMarketingHeroSection() {
                   }}
                 >
                   <img
-                    src="https://cdn.rareblocks.xyz/collection/celebration/images/hero/1/hero-img.png"
+                    src="assets/digital/hero-img.png"
                     alt=""
                     className="w-full"
                   />

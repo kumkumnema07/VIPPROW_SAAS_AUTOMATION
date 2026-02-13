@@ -17,8 +17,8 @@ export function LampSection() {
       {/* Content */}
       <div className="relative z-10">
         <PrimaryHeading
-          heading="Empower Your Workflow with AI"
-          des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insights to streamline your operations."
+          heading="Build Faster. Work Smarter. Connect Now."
+          des=" Contact us to unlock seamless automation and real-time insights.."
         />
       </div>
 

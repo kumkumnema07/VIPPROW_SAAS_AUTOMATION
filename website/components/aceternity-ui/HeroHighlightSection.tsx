@@ -6,7 +6,7 @@ import PrimaryHeading from "../ui/heading/PrimaryHeading";
 
 export function HeroHighlightSection() {
   return (
-   <section className="relative w-full h-[40vh] md:h-[600px] overflow-hidden">
+    <section className="relative w-full h-[40vh] md:h-[600px] overflow-hidden">
       {/* Background Shader */}
       <DarkVeil
         hueShift={0}
@@ -20,12 +20,15 @@ export function HeroHighlightSection() {
       {/* Centered Content */}
       <div className="absolute inset-0 flex items-center justify-center text-center z-10 px-4">
         <PrimaryHeading
-          heading="Our Services"
-          des="Ask your AI Agent for real-time"
+          heading="
+ Where strategy meets intelligent execution
+"
+          des="
+ We deliver digital solutions that remove friction and unlock measurable performance.
+"
         />
       </div>
     </section>
-
 
     // <HeroHighlight>
     //   <motion.h1
@@ -50,7 +53,5 @@ export function HeroHighlightSection() {
     //     </Highlight>
     //   </motion.h1>
     // </HeroHighlight>
-
-   
   );
 }

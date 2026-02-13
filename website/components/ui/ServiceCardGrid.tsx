@@ -12,14 +12,14 @@ serviceType="digital-marketing"
       />
 
       <AnimatedSVGCard
-        href="/Software Development"
+        href="/software-as-a-service"
         title="Software Development"
         description="Custom-built software solutions designed to streamline operations, enhance efficiency, and scale with your business."
           serviceType="software-development"
       />
 
       <AnimatedSVGCard
-        href="/Business Automation"
+        href="/automation"
         title="Business Automation"
         description="Intelligent automation systems that simplify workflows, reduce manual effort, and accelerate business performance."
          serviceType="business-automation"

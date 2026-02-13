@@ -31,6 +31,7 @@ export function ContactForm({
     name: "",
     email: "",
     phone: "",
+    service: "",
     message: "",
     subject: "",
   });
@@ -56,6 +57,7 @@ export function ContactForm({
           name: "",
           email: "",
           phone: "",
+          service: "",
           message: "",
           subject: "",
         });
@@ -114,6 +116,40 @@ export function ContactForm({
                   required
                 />
               </Field>
+
+              <Field>
+  <FieldLabel htmlFor="service">Service</FieldLabel>
+
+  <select
+    id="service"
+    name="service"
+    value={form.service}
+    onChange={handleChange}
+    required
+    className="w-full border rounded-md px-3 py-2"
+  >
+    <option value="">Select a Service</option>
+
+    <option value="web-development">Web Development</option>
+    <option value="frontend-development">Frontend Development</option>
+    <option value="backend-development">Backend Development</option>
+    <option value="fullstack-development">Full Stack Development</option>
+
+    <option value="mobile-app-development">Mobile App Development</option>
+    <option value="android-development">Android App Development</option>
+    <option value="ios-development">iOS App Development</option>
+
+    <option value="software-development">Custom Software Development</option>
+    <option value="saas-development">SaaS Development</option>
+    <option value="api-development">API Development</option>
+
+    <option value="ui-ux-design">UI / UX Design</option>
+    <option value="testing-qa">Software Testing & QA</option>
+
+    <option value="maintenance-support">Maintenance & Support</option>
+  </select>
+</Field>
+
 
               <Field>
                 <FieldLabel htmlFor="email">Email</FieldLabel>

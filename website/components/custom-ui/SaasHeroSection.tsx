@@ -238,7 +238,7 @@ export default function SaasHeroSection() {
           <div className="flex items-center gap-2">
             <Database className="h-4 w-4 text-blue-400" />
             <span className="text-xs font-medium text-blue-200">
-              Decentralized Storage
+             Customized Solution
             </span>
           </div>
         </motion.div>
@@ -272,16 +272,16 @@ export default function SaasHeroSection() {
               <span className="mr-2 rounded-full bg-blue-500 px-2 py-0.5 text-xs font-semibold text-white">
                 New
               </span>
-              Introducing Nexus Platform
+             SaaS Automation Company
             </motion.div>
 
             <motion.h1
               variants={itemVariants}
               className="font-heading mb-6 bg-gradient-to-r from-white/70 via-white to-blue-500/100 bg-clip-text text-3xl leading-tight text-transparent sm:text-4xl md:text-2xl lg:text-6xl"
             >
-              The Bridge Between <br className="hidden sm:inline" />
+             The Smart SaaS Platform for <br className="hidden sm:inline" />
               <span className="bg-gradient-to-r from-blue-600/20/20 via-blue-600/20 to-blue-600/20 bg-clip-text text-transparent">
-                AI and Web3
+                Scalable Business Growth
               </span>
             </motion.h1>
 
@@ -324,15 +324,15 @@ export default function SaasHeroSection() {
               </span>
               <div className="flex cursor-pointer items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-2 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm transition-all hover:bg-blue-950">
                 <div className="h-2 w-2 rounded-full bg-blue-400"></div>
-                Ethereum
+                CRM
               </div>
               <div className="flex cursor-pointer items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-2 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm transition-all hover:bg-blue-950">
                 <div className="h-2 w-2 rounded-full bg-blue-400"></div>
-                Solana
+                Marketing Tools
               </div>
               <div className="flex cursor-pointer items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-2 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm transition-all hover:bg-blue-950">
                 <div className="h-2 w-2 rounded-full bg-green-400"></div>
-                OpenAI
+                Analytics Platforms
               </div>
               <div className="flex cursor-pointer items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-2 py-1 text-xs font-medium text-slate-300 backdrop-blur-sm transition-all hover:bg-blue-950">
                 <div className="h-2 w-2 rounded-full bg-yellow-400"></div>
@@ -346,9 +346,7 @@ export default function SaasHeroSection() {
               variants={itemVariants}
               className="mb-8 max-w-md px-6 text-center text-lg leading-relaxed text-slate-300/90 lg:text-end"
             >
-              Nexus connects AI tools with Web3 infrastructure, giving
-              developers the power to build beyond limits. One platform. Endless
-              potential.
+             Vipprow connects intelligent automation with business operations, helping teams work faster, smarter, and more efficiently — all from one powerful SaaS platform.
             </motion.p>
             <motion.div
               variants={itemVariants}

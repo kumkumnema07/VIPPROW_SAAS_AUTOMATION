@@ -22,8 +22,8 @@ export default function DigitalMarketingPage() {
       {/* Digital Marketing Feature Start */}
       <div className="pt-20 max-w-7xl mx-auto">
         <PrimaryHeading
-          heading="Empower Your Workflow with AI"
-          des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
+          heading="Smarter Digital Marketing Starts with Intelligent Systems"
+          des="Streamline your marketing operations with AI-driven strategies and seamless integrations."
         />
         <DigitalMarketingFeatureSection />
       </div>

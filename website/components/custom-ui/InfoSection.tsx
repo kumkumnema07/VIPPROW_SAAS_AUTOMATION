@@ -33,11 +33,10 @@ export default function InfoSection() {
                 <h1
                   className=" text-3xl font-semibold leading-tighter text-zinc-900 dark:text-white sm:text-4xl md:text-5xl font-heading"
                 >
-                  An editor that helps you write clean codes.
+                  A smarter way to market and scale your business..
                 </h1>
                 <p className="mt-2 text-lg text-gray-200 sm:mt-6 font-inter">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vehicula massa in enim luctus. Rutrum arcu.
+                  Data-backed digital strategies that drive visibility, leads, and long-term growth—without guesswork..
                 </p>
 
                 <div className="mt-10 flex flex-row gap-4">
@@ -90,12 +89,10 @@ export default function InfoSection() {
 
                   <blockquote className="mt-6">
                     <p className="font-heading text-md font-bold text-gray-100 font-pj">
-                      Best code editor in market!
+                       A reliable partner for performance-driven marketing.
                     </p>
                     <p className="font-heading mt-3 text-base leading-7 text-gray-100 font-inter">
-                      Consectetur adipiscing elit. Vehicula massa in enim
-                      luctus. Rutrum arcu, aliquam nulla tincidunt gravida.
-                      Cursus convallis dolor semper pretium ornare.
+                      We build structured campaigns that help businesses attract the right audience and grow consistently.Focused on clarity, execution, and measurable outcomes.
                     </p>
                   </blockquote>
 

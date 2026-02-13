@@ -7,8 +7,8 @@ export default function WorkFlowSteps() {
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
             <PrimaryHeading
-              heading="How does it work?"
-              des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
+              heading="Inside Vipprow: How Our SaaS Simplifies Your Business?"
+              des=" Understand how Vipprow turns scattered tasks into organized workflows using automation and data-driven systems."
             />
           </div>
 
@@ -30,11 +30,10 @@ export default function WorkFlowSteps() {
                   </span>
                 </div>
                 <h3 className="mt-6 text-xl font-semibold leading-tight text-white md:mt-10">
-                  Create a free account
+                  Onboard Your Business
                 </h3>
                 <p className="mt-4 text-base text-gray-100">
-                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                  amet sint. Velit officia consequat duis enim velit mollit.
+                 Set up your workspace in minutes with guided steps.
                 </p>
               </div>
 
@@ -46,11 +45,10 @@ export default function WorkFlowSteps() {
                   </span>
                 </div>
                 <h3 className="mt-6 text-xl font-semibold leading-tight text-white md:mt-10">
-                  Build your website
+                  Automate Daily Operations
                 </h3>
                 <p className="mt-4 text-base text-gray-100">
-                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                  amet sint. Velit officia consequat duis enim velit mollit.
+                  Reduce manual work with connected workflows.
                 </p>
               </div>
 
@@ -62,11 +60,10 @@ export default function WorkFlowSteps() {
                   </span>
                 </div>
                 <h3 className="mt-6 text-xl font-semibold leading-tight text-white md:mt-10">
-                  Release & Launch
+                  Scale with Insights
                 </h3>
                 <p className="mt-4 text-base text-gray-100">
-                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                  amet sint. Velit officia consequat duis enim velit mollit.
+                  Track performance and grow efficiently.
                 </p>
               </div>
             </div>
