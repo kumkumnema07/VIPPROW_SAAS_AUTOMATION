@@ -37,16 +37,6 @@ import {
 import { ChevronsUpDown } from "lucide-react";
 import { Service } from "@/types/service";
 
-type ContactFormData = {
-  type: string;
-  name: string;
-  email: string;
-  phone: string;
-  service: string;
-  message: string;
-  subject: string;
-};
-
 export function ContactForm({
   className,
   ...props
@@ -64,28 +54,19 @@ export function ContactForm({
     name: "",
     email: "",
     phone: "",
-    service: "",
     message: "",
     subject: "",
   });
 
-  // ✅ Input & Textarea Handler
-  const handleChange: React.ChangeEventHandler<
-    HTMLInputElement | HTMLTextAreaElement
-  > = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  // ✅ Separate Select Handler (Error-Free)
-  const handleSelectChange: React.ChangeEventHandler<HTMLSelectElement> = (
-    e
+  // Handle On Change Inputs
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // ✅ Submit Handler
+  // Handle Form Submit
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -103,6 +84,7 @@ export function ContactForm({
 
     submitMutation.mutate(payload, {
       onSuccess: () => {
+        console.log("Form submitted successfully.");
         toast.success("Form submitted successfully.");
 
         // Reset form fields
@@ -111,7 +93,6 @@ export function ContactForm({
           name: "",
           email: "",
           phone: "",
-          service: "",
           message: "",
           subject: "",
         });
@@ -139,19 +120,14 @@ export function ContactForm({
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-xl">Get in touch</CardTitle>
-          <CardDescription>
-            Fill the form and we will contact you soon.
-          </CardDescription>
+          <CardDescription>Get in touch description</CardDescription>
         </CardHeader>
-
         <CardContent>
           <form onSubmit={handleSubmit}>
             <FieldGroup>
-              <FieldSeparator>
-                Please fill all required fields
+              <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
+                Fill form text
               </FieldSeparator>
-
-              {/* Name */}
               <Field>
                 <FieldLabel htmlFor="name">Full Name</FieldLabel>
                 <Input
@@ -165,72 +141,21 @@ export function ContactForm({
                 />
               </Field>
 
-              {/* Phone */}
               <Field>
                 <FieldLabel htmlFor="phone">Phone</FieldLabel>
                 <Input
                   id="phone"
                   type="text"
                   placeholder="1234567890"
+                  min={10}
+                  max={10}
                   name="phone"
                   value={form.phone}
                   onChange={handleChange}
-                  pattern="[0-9]{10}"
-                  maxLength={10}
                   required
                 />
               </Field>
 
-              {/* Service Select */}
-              <Field>
-                <FieldLabel htmlFor="service">Service</FieldLabel>
-
-                <select
-                  id="service"
-                  name="service"
-                  value={form.service}
-                  onChange={handleSelectChange}
-                  required
-                  className="w-full border rounded-md px-3 py-2 bg-gray-800"
-                >
-                  <option value="">Select a Service</option>
-                  <option value="web-development">Web Development</option>
-                  <option value="digital-marketing">Digital Marketing</option>
-                  <option value="business-automation">Business Automation</option>
-                  <option value="graphic-design">Graphic Design</option>
-                  <option value="seo">Search Engine Optimization</option>
-                  <option value="social-media-marketing">
-                    Social Media Marketing
-                  </option>
-                  <option value="email-marketing">Email Marketing</option>
-                  <option value="content-marketing">Content Marketing</option>
-                  <option value="performance-marketing">
-                    Performance Marketing
-                  </option>
-                  <option value="branding">Branding</option>
-                  <option value="mobile-app-development">
-                    Mobile App Development
-                  </option>
-                  <option value="android-development">
-                    Android App Development
-                  </option>
-                  <option value="ios-development">iOS App Development</option>
-                  <option value="software-development">
-                    Custom Software Development
-                  </option>
-                  <option value="saas-development">SaaS Development</option>
-                  <option value="influencer-marketing">
-                    Influencer Marketing
-                  </option>
-                  <option value="ui-ux-design">UI / UX Design</option>
-                  <option value="testing-qa">Software Testing & QA</option>
-                  <option value="maintenance-support">
-                    Maintenance & Support
-                  </option>
-                </select>
-              </Field>
-
-              {/* Email */}
               <Field>
                 <FieldLabel htmlFor="email">Email</FieldLabel>
                 <Input
@@ -299,34 +224,29 @@ export function ContactForm({
 
               <Field>
                 <FieldLabel htmlFor="message">Message</FieldLabel>
-                <textarea
+                <Input
                   id="message"
+                  type="text"
+                  placeholder="message"
                   name="message"
                   value={form.message}
                   onChange={handleChange}
                   required
-                  className="w-full border rounded-md px-3 py-2 bg-gray-800"
                 />
               </Field>
 
-              {/* Submit */}
               <Field>
-                <Button type="submit" disabled={submitMutation.isPending}>
-                  {submitMutation.isPending
-                    ? "Submitting..."
-                    : "Get in touch"}
+                <Button type="submit" disabled={submitMutation.isPaused}>
+                  {submitMutation.isPending ? "Submitting" : "Get in touch"}
                 </Button>
               </Field>
             </FieldGroup>
           </form>
         </CardContent>
       </Card>
-
-      <FieldDescription className="px-6 text-center">
-        Our <a href="#">Terms of Service</a> and{" "}
-        <a href="#">Privacy Policy</a>.
+      <FieldDescription className="px-6 text-center hid">
+        Our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
       </FieldDescription>
     </div>
   );
 }
-

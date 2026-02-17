@@ -1,7 +1,3 @@
-
-
-
-
 "use client";
 
 import { useState } from "react";
@@ -18,7 +14,18 @@ const TABS = ["Marketing", "Software", "Automation"] as const;
 
 type TabKey = (typeof TABS)[number];
 
-const SERVICES: Record<TabKey, any[]> = {
+interface ServiceGridScrollerProps {
+  initialTab?: TabKey;
+  showTabs?: boolean;
+}
+interface Service {
+  image: string;
+  title: string;
+  subtitle: string;
+  tag: string;
+}
+
+const SERVICES: Record<TabKey, Service[]> = {
   Marketing: [
     {
       image: "/assets/images/services/marketing.jpg",
@@ -44,93 +51,9 @@ const SERVICES: Record<TabKey, any[]> = {
       subtitle: "Growth-driven campaigns",
       tag: "Growth",
     },
-    {
-      image: "/assets/images/services/seo.jpg",
-      title: "SEO Optimization",
-      subtitle: "Search visibility",
-      tag: "SEO",
-    },
-    {
-      image: "/assets/images/services/branding.jpg",
-      title: "Brand Identity",
-      subtitle: "Visual branding",
-      tag: "Brand",
-    },
-    {
-      image: "/assets/images/services/marketing.jpg",
-      title: "Digital Marketing",
-      subtitle: "Growth-driven campaigns",
-      tag: "Growth",
-    },
-    {
-      image: "/assets/images/services/seo.jpg",
-      title: "SEO Optimization",
-      subtitle: "Search visibility",
-      tag: "SEO",
-    },
-    {
-      image: "/assets/images/services/branding.jpg",
-      title: "Brand Identity",
-      subtitle: "Visual branding",
-      tag: "Brand",
-    },
-    {
-      image: "/assets/images/services/marketing.jpg",
-      title: "Digital Marketing",
-      subtitle: "Growth-driven campaigns",
-      tag: "Growth",
-    },
-    {
-      image: "/assets/images/services/seo.jpg",
-      title: "SEO Optimization",
-      subtitle: "Search visibility",
-      tag: "SEO",
-    },
-    {
-      image: "/assets/images/services/branding.jpg",
-      title: "Brand Identity",
-      subtitle: "Visual branding",
-      tag: "Brand",
-    },
   ],
 
   Software: [
-    {
-      image: "/assets/images/services/development.jpg",
-      title: "Web Development",
-      subtitle: "Scalable applications",
-      tag: "Dev",
-    },
-    {
-      image: "/assets/images/services/software.jpg",
-      title: "Custom Software",
-      subtitle: "Enterprise solutions",
-      tag: "Tech",
-    },
-    {
-      image: "/assets/images/services/development.jpg",
-      title: "Web Development",
-      subtitle: "Scalable applications",
-      tag: "Dev",
-    },
-    {
-      image: "/assets/images/services/software.jpg",
-      title: "Custom Software",
-      subtitle: "Enterprise solutions",
-      tag: "Tech",
-    },
-    {
-      image: "/assets/images/services/development.jpg",
-      title: "Web Development",
-      subtitle: "Scalable applications",
-      tag: "Dev",
-    },
-    {
-      image: "/assets/images/services/software.jpg",
-      title: "Custom Software",
-      subtitle: "Enterprise solutions",
-      tag: "Tech",
-    },
     {
       image: "/assets/images/services/development.jpg",
       title: "Web Development",
@@ -182,50 +105,16 @@ const SERVICES: Record<TabKey, any[]> = {
       subtitle: "From idea to launch",
       tag: "Product",
     },
-    {
-      image: "/assets/images/services/design.jpg",
-      title: "UI / UX Design",
-      subtitle: "Product experiences",
-      tag: "Design",
-    },
-    {
-      image: "/assets/images/services/product.jpg",
-      title: "Product Strategy",
-      subtitle: "From idea to launch",
-      tag: "Product",
-    },
-    {
-      image: "/assets/images/services/design.jpg",
-      title: "UI / UX Design",
-      subtitle: "Product experiences",
-      tag: "Design",
-    },
-    {
-      image: "/assets/images/services/product.jpg",
-      title: "Product Strategy",
-      subtitle: "From idea to launch",
-      tag: "Product",
-    },
-    {
-      image: "/assets/images/services/design.jpg",
-      title: "UI / UX Design",
-      subtitle: "Product experiences",
-      tag: "Design",
-    },
-    {
-      image: "/assets/images/services/product.jpg",
-      title: "Product Strategy",
-      subtitle: "From idea to launch",
-      tag: "Product",
-    },
   ],
-
 };
 
 /* ------------------ COMPONENT ------------------ */
 
-export default function ServiceGridScroller() {
-  const [activeTab, setActiveTab] = useState<TabKey>("Marketing");
+export default function ServiceGridScroller({
+  initialTab = "Marketing",
+  showTabs = true,
+}: ServiceGridScrollerProps) {
+  const [activeTab, setActiveTab] = useState<TabKey>(initialTab);
 
   return (
     <section className="relative py-20 bg-black overflow-hidden max-w-7xl mx-auto">

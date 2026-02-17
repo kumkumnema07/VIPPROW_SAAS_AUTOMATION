@@ -7,7 +7,6 @@ export default function WhyChooseUs() {
   return (
     <section className="relative py-10 px-6 md:px-16 text-white overflow-hidden">
       <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        
         {/* LEFT IMAGE */}
         <div className="relative">
           <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-white/5 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_0_80px_-15px_rgba(139,92,246,0.35)]">
@@ -20,13 +19,6 @@ export default function WhyChooseUs() {
             />
           </div>
         </div>
-
-
-
-
-
-
-
         {/* RIGHT CONTENT */}
         <div>
           <span className="text-sm uppercase tracking-widest text-neutral-400 font-heading">
@@ -38,7 +30,9 @@ export default function WhyChooseUs() {
           </h2>
 
           <p className="mt-6 text-neutral-400 max-w-xl leading-relaxed font-heading text-sm">
-           At Vipprow, we design scalable growth frameworks powered by data, automation, and strategic execution—so businesses can move faster and grow smarter.
+            At Vipprow, we design scalable growth frameworks powered by data,
+            automation, and strategic execution—so businesses can move faster
+            and grow smarter.
           </p>
 
           {/* Vision bullets */}
@@ -79,19 +73,10 @@ function VisionItem({
         {title}
         <ArrowUpRight className="h-4 w-4 text-blue-500" />
       </h4>
-      <p className="mt-2 text-sm text-neutral-400 max-w-md">
-        {description}
-      </p>
+      <p className="mt-2 text-sm text-neutral-400 max-w-md">{description}</p>
     </div>
   );
 }
-
-
-
-
-
-
-
 
 // "use client";
 

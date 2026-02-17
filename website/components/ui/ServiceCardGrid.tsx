@@ -8,21 +8,21 @@ export default function ServiceCardGrid() {
         title="Digital Marketing"
         description="
 Performance-driven digital marketing strategies that build visibility, generate leads, and drive measurable business growth."
-serviceType="digital-marketing"
+        serviceType="digital-marketing"
       />
 
       <AnimatedSVGCard
         href="/software-as-a-service"
         title="Software Development"
         description="Custom-built software solutions designed to streamline operations, enhance efficiency, and scale with your business."
-          serviceType="software-development"
+        serviceType="software-development"
       />
 
       <AnimatedSVGCard
         href="/automation"
         title="Business Automation (A.I)"
         description="Intelligent automation systems that simplify workflows, reduce manual effort, and accelerate business performance."
-         serviceType="business-automation"
+        serviceType="business-automation"
       />
     </div>
   );

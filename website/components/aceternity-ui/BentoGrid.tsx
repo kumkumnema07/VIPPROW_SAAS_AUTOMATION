@@ -35,9 +35,10 @@ const features = [
   {
     Icon: FileTextIcon,
     name: "Intelligent Auto-Save System",
-    description: "Your operations and performance data are continuously backed up and protected.",
+    description:
+      "Your operations and performance data are continuously backed up and protected.",
     href: "#",
-    
+    cta: "Learn more",
     className: "col-span-3 lg:col-span-1",
     background: (
       <ChatDemoLoop className="absolute top-0 right-2 h-[400px] w-full scale-100 border-none [mask-image:linear-gradient(to_top,transparent_5%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-100" />
@@ -47,21 +48,23 @@ const features = [
   {
     Icon: BellIcon,
     name: "Growth Monitoring Alerts",
-    description: "Track leads, revenue spikes, and campaign progress the moment it happens..",
+    description:
+      "Track leads, revenue spikes, and campaign progress the moment it happens..",
     href: "#",
-   
+    cta: "Learn more",
     className: "col-span-3 lg:col-span-1",
     background: (
       // <OrbitingCirclesDemo />
-       <OrbitingCirclesDemo className="absolute inset-0 h-full w-full scale-85 md:scale-100 border-none [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-100" />
+      <OrbitingCirclesDemo className="absolute inset-0 h-full w-full scale-85 md:scale-100 border-none [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-100" />
     ),
   },
   {
     Icon: Share2Icon,
     name: "Analytics",
-    description: "Turning insights into real business growth for the clients we manage.",
+    description:
+      "Turning insights into real business growth for the clients we manage.",
     href: "#",
-    
+    cta: "Learn more",
     className: "col-span-3 lg:col-span-1",
     background: (
       <AreaChartSection className="absolute top-4 right-0 h-[450px] w-full scale-100 border-none [mask-image:linear-gradient(to_top,transparent_0%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-100" />
@@ -73,8 +76,10 @@ const features = [
     description: "Revenue we have genrated for clients.",
     className: "col-span-3 lg:col-span-1",
     href: "#",
-    
-    background: <ChartBarLabelSection className="absolute top-4 right-0 h-[450px] w-full scale-100 border-none [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-100" />,
+    cta: "Learn more",
+    background: (
+      <ChartBarLabelSection className="absolute top-4 right-0 h-[450px] w-full scale-100 border-none [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-100" />
+    ),
   },
 ];
 

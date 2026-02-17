@@ -32,9 +32,9 @@ export default function DigitalMarketingPage() {
 
       {/* Services Start */}
       <ServiceGridScroller
-  initialTab="Marketing"
-  showTabs={false}
-/>
+        initialTab="Marketing"
+        showTabs={false}
+      />
 
       {/* <ServiceGridScroller /> */}
       {/* Services End */}
