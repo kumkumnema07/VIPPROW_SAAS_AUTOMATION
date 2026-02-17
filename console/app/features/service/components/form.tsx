@@ -16,17 +16,6 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 
-
-import {
-  Combobox,
-  ComboboxContent,
-  ComboboxEmpty,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxList,
-} from "@/components/ui/combobox"
-
-
 import { ImageIcon, UploadIcon, XIcon, Loader2 } from "lucide-react";
 import { useFileUpload } from "@/hooks/use-file-upload";
 import { toast } from "sonner";
