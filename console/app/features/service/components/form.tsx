@@ -16,17 +16,6 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 
-
-import {
-  Combobox,
-  ComboboxContent,
-  ComboboxEmpty,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxList,
-} from "@/components/ui/combobox"
-
-
 import { ImageIcon, UploadIcon, XIcon, Loader2 } from "lucide-react";
 import { useFileUpload } from "@/hooks/use-file-upload";
 import { toast } from "sonner";
@@ -39,7 +28,14 @@ import {
 } from "../data/serviceApi";
 import { RichTextEditor } from "~/components/crud/RichTextEditor";
 import { useGetDomainsQuery } from "~/features/domains/data/domainsApi";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
+import { Combobox } from "~/components/crud/Combobox";
 
 // Validation helper
 const validate = (values: any) => {
@@ -75,8 +71,12 @@ export default function ServiceForm({
   const { id } = useParams<{ id: string }>();
   const isEdit = mode === "edit" || !!id;
 
-  const { data: domainData } = useGetDomainsQuery({ page: 2, limit: 50 });
-  const domains = domainData?.data || [];
+  const { data: domainData } = useGetDomainsQuery({ page: 1, limit: 50 });
+  const domainOptions =
+    domainData?.data?.map((domain: any) => ({
+      value: domain._id,
+      label: domain.name,
+    })) || [];
 
   const { data, isLoading } = useGetPublicServiceNamesQuery();
   const services = data?.data ?? [];
@@ -240,22 +240,11 @@ export default function ServiceForm({
                 {/* Domain */}
                 <div>
                   <Label className="mb-2">Domain</Label>
-                  <Select
-                    value={values.serviceId}
-                    onValueChange={(value) => handleChange("serviceId", value)}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select Service" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {services.map((service) => (
-                        <SelectItem key={service._id} value={service._id}>
-                          {service.title}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-
+                  <Combobox
+                    options={domainOptions}
+                    value={values.domain}
+                    onChange={(e) => handleChange("domain", e)}
+                  />
                   {errors.domain && (
                     <p className="text-xs text-red-500 mt-1">{errors.domain}</p>
                   )}

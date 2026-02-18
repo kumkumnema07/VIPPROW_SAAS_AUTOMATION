@@ -63,7 +63,7 @@ export default function ServicePage() {
       toast.success(
         `Service "${service.title}" has been ${
           service.isActive ? "deactivated" : "activated"
-        }.`
+        }.`,
       );
     } catch {
       toast.error("Failed to update service status.");
@@ -124,6 +124,27 @@ export default function ServicePage() {
           {row.original.title}
         </span>
       ),
+    },
+    {
+      accessorKey: "domain",
+      header: ({ column }) => (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Domain
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      ),
+      cell: ({ row }) => {
+        const domain = row.original.domain;
+
+        return (
+          <span className="font-medium text-foreground">
+            {domain?.name || "-"}
+          </span>
+        );
+      },
     },
     {
       accessorKey: "subHeading",
@@ -204,7 +225,9 @@ export default function ServicePage() {
       </div>
 
       {/* BULK ACTIONS */}
-      {tableInstance && <BulkActions table={tableInstance} entityName="service" />}
+      {tableInstance && (
+        <BulkActions table={tableInstance} entityName="service" />
+      )}
 
       {/* DATA TABLE */}
       <DataTable
