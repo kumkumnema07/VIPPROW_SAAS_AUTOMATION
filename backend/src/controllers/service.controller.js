@@ -5,6 +5,7 @@ import {
   uploadToCloudinary,
 } from "../utils/cloudinaryService.js";
 import mongoose from "mongoose";
+import Domain from "../models/services/domain.model.js";
 
 /* ============================
    🟢 PUBLIC CONTROLLERS
