@@ -27,6 +27,9 @@ export default function ServiceHighlighted() {
               right audience, Vipprow helps increase engagement, boost
               visibility, and generate consistent business growth..
             </p>
+
+
+            
             <h2 className="mt-4 text-4xl md:text-4xl font-semibold font-heading leading-tighter text-white">
               SEO & Website Development
             </h2>
