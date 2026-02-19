@@ -5,6 +5,8 @@ import WorkFlowSteps from "@/components/custom-ui/WorkFlowSteps";
 import SaasFeatureSteps from "@/components/mvpblock-ui/SaasFeatureSteps";
 import TopProductSparkles from "@/components/mvpblock-ui/TopProductSparkles";
 import ServiceGridScroller from "@/components/ui/cards/ServiceGridScroller";
+import SoftwareDes from "@/components/ui/cards/SoftwareDes";
+import SoftwareHighlighted from "@/components/ui/cards/SoftwareHighlited";
 import PrimaryHeading from "@/components/ui/heading/PrimaryHeading";
 
 export default function SoftwareAsAServicePage() {
@@ -31,11 +33,27 @@ export default function SoftwareAsAServicePage() {
       {/* Services Start */}
       <ServiceGridScroller />
       {/* Services End */}
+      {/* software service kliye speciality 1 */}
+      <div className="pt-20 max-w-7xl mx-auto">
+        <PrimaryHeading
+          heading="Client Experiences That Matter"
+          des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
+        />
+        <SoftwareDes />
+      </div>
+       <div className="pt-20 max-w-7xl mx-auto">
+        <PrimaryHeading
+          heading="Client Experiences That Matter"
+          des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
+        />
+        <SoftwareHighlighted />
+        </div>
+ {/* software service kliye speciality 2 */}
 
       {/* Testimonial Start */}
       <div className="pt-20 max-w-7xl mx-auto">
         <PrimaryHeading
-          heading="Empower Your Workflow with AI"
+          heading="Client Experiences That Matter"
           des="Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insghts to streamline your operations."
         />
         <ClientTestimonialMarquee />
